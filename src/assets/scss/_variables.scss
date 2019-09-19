@@ -26,6 +26,10 @@ $color-light-grey: #d6d6d6;
 // Font Stack
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif;
 
+// Font Weights
+$weight-base: 400;
+$weight-semibold: 600;
+
 // Spacing Scale
 $space-2xs: 0.4rem;
 $space-xs: 0.8rem;
@@ -48,3 +52,8 @@ $text-xl: 2rem;
 $text-2xl: 2.4rem;
 $text-3xl: 3rem;
 $text-4xl: 3.6rem;
+
+// Border Radius
+$radius-sm: 0.1rem;
+$radius-md: 0.3rem;
+$radius-lg: 0.5rem;

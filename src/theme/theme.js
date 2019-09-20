@@ -1,5 +1,5 @@
 const theme = {
-  pallette: {
+  palette: {
     primary: {
       '600': '#a18a5f',
       '500': '#b39c70',

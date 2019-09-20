@@ -51,13 +51,13 @@ const NavigationItem = styled.li`
 
 const NavigationLink = styled.a`
   display: block;
-  color: ${(props) => props.theme.pallette.neutral['100']};
+  color: ${(props) => props.theme.palette.neutral['100']};
   font-size: ${(props) => props.theme.typography.size.base};
   text-decoration: none;
   transition: color 0.3s ease-in-out;
   padding: 0.1rem;
 
   &:hover {
-    color: ${(props) => props.theme.pallette.neutral['200']};
+    color: ${(props) => props.theme.palette.neutral['200']};
   }
 `;

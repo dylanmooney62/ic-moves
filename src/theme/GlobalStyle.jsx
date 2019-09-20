@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: ${(props) => props.theme.typography.family};
-    color: ${(props) => props.theme.pallette.neutral[300]};
+    color: ${(props) => props.theme.palette.neutral[300]};
     line-height: 1.6;
     font-weight: ${(props) => props.theme.typography.weight.base}
   }

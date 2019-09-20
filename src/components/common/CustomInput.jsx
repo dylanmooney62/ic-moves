@@ -17,13 +17,13 @@ CustomInput.propTypes = {
 export default CustomInput;
 
 const FormGroup = styled.div`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   margin-bottom: ${(props) => props.theme.spacing.sm};
 `;
 
 const StyledLabel = styled.label`
-  color: ${(props) => props.theme.pallette.neutral['500']};
+  color: ${(props) => props.theme.palette.neutral['500']};
   font-size: ${(props) => props.theme.typography.size.sm};
   margin-bottom: ${(props) => props.theme.spacing['2xs']};
 `;
@@ -33,14 +33,14 @@ const StyledInput = styled.input`
   padding: ${(props) => props.theme.spacing.xs};
   font-size: ${(props) => props.theme.typography.size.sm};
   font-family: ${(props) => props.theme.typography.family};
-  color: ${(props) => props.theme.pallette.neutral['500']};
-  border: 0.1rem solid ${(props) => props.theme.pallette.primary['300']};
+  color: ${(props) => props.theme.palette.neutral['500']};
+  border: 0.1rem solid ${(props) => props.theme.palette.primary['300']};
 
   ::placeholder {
-    color: ${(props) => props.theme.pallette.neutral['200']};
+    color: ${(props) => props.theme.palette.neutral['200']};
   }
 
   :focus {
-    outline: 1px solid ${(props) => props.theme.pallette.primary['400']};
+    outline: 0.1rem solid ${(props) => props.theme.palette.primary['400']};
   }
 `;

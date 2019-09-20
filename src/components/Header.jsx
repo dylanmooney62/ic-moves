@@ -39,14 +39,14 @@ const TextBox = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${(props) => props.theme.pallette.neutral['100']};
+  color: ${(props) => props.theme.palette.neutral['100']};
   font-size: ${(props) => props.theme.typography.size['5xl']};
   margin-bottom: ${(props) => props.theme.spacing.lg};
   font-weight: ${(props) => props.theme.typography.weight.bold};
 `;
 
 const Subtitle = styled.p`
-  color: ${(props) => props.theme.pallette.neutral['100']};
+  color: ${(props) => props.theme.palette.neutral['100']};
   font-size: ${(props) => props.theme.typography.size.base};
   max-width: 60rem;
 `;

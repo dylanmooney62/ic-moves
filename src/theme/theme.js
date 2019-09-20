@@ -14,14 +14,15 @@ const theme = {
       '100': '#16283c',
     },
     neutral: {
-      '400': '#292929',
-      '300': '#585858',
-      '200': '#909090',
-      '100': '#d6d6d6',
+      '500': '#292929',
+      '400': '#585858',
+      '300': '#909090',
+      '200': '#d6d6d6',
+      '100': '#f8f8f8',
     },
   },
   typography: {
-    family: ['Source Sans Pro', 'Helvetica', 'sans-serif'].join(' '),
+    family: ['Source Sans Pro, ', 'Helvetica, ', 'sans-serif'].join(' '),
     weight: {
       base: 400,
       bold: 600,

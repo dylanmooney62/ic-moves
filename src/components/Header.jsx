@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import heroImage from '../assets/images/hero-image.jpeg';
-import Container from './container.component';
+import Container from './Container';
+import Navigation from './Navigation';
 
 const Header = () => (
   <StyledHeader>
+    <Navigation />
     <Container maxWidth="sm">
       <TextBox>
         <Title>Find your dream home</Title>
@@ -23,8 +25,8 @@ const StyledHeader = styled.header`
   position: relative;
   width: 100%;
   background-image: linear-gradient(
-      rgba(23, 41, 62, 0.55),
-      rgba(23, 41, 52, 0.55)
+      rgba(23, 41, 62, 0.4),
+      rgba(23, 41, 52, 0.4)
     ),
     url(${heroImage});
   background-size: cover;
@@ -32,17 +34,19 @@ const StyledHeader = styled.header`
 `;
 
 const TextBox = styled.div`
-  padding: 25rem 0;
+  padding-top: 18rem;
+  padding-bottom: 30rem;
 `;
 
 const Title = styled.h1`
-  color: rgba(255, 255, 255, 0.85);
+  color: ${(props) => props.theme.pallette.neutral['100']};
   font-size: ${(props) => props.theme.typography.size['5xl']};
   margin-bottom: ${(props) => props.theme.spacing.lg};
+  font-weight: ${(props) => props.theme.typography.weight.bold};
 `;
 
 const Subtitle = styled.p`
-  color: rgba(255, 255, 255, 0.8);
+  color: ${(props) => props.theme.pallette.neutral['100']};
   font-size: ${(props) => props.theme.typography.size.base};
   max-width: 60rem;
 `;

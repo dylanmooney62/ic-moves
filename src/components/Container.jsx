@@ -13,4 +13,8 @@ Container.propTypes = {
   maxWidth: PropTypes.oneOf(['sm', 'lg']),
 };
 
+Container.defaultProps = {
+  maxWidth: 'lg',
+};
+
 export default Container;

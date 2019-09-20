@@ -45,14 +45,14 @@ const NavigationList = styled.ul`
 
 const NavigationItem = styled.li`
   &:not(:last-child) {
-    margin-right: ${(props) => props.theme.spacing['2xl']};
+    margin-right: ${(props) => props.theme.spacing['3xl']};
   }
 `;
 
 const NavigationLink = styled.a`
   display: block;
   color: ${(props) => props.theme.pallette.neutral['100']};
-  font-size: ${(props) => props.theme.typography.size.sm};
+  font-size: ${(props) => props.theme.typography.size.base};
   text-decoration: none;
   transition: color 0.3s ease-in-out;
   padding: 0.1rem;

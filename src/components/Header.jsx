@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import heroImage from '../assets/images/hero-image.jpeg';
-import Container from './Container';
+import Container from './common/Container';
 import Navigation from './Navigation';
 
 const Header = () => (

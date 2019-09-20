@@ -1,11 +1,13 @@
 import React from 'react';
-import './App.scss';
+import Header from './components/header.component';
+import GlobalStyle from './theme/global-style.component';
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <>
+      <GlobalStyle />
+      <Header />
+    </>
   );
 };
 

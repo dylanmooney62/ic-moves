@@ -27,7 +27,7 @@ const TabButton = styled.button`
 `;
 
 TabButton.propTypes = {
-  active: PropTypes.bool,
+  active: PropTypes.PropTypes.bool,
 };
 
 export default TabButton;

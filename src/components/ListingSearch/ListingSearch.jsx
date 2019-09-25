@@ -13,7 +13,7 @@ import {
 
 export class ListingSearch extends Component {
   state = {
-    buy: true,
+    method: 'buy',
     location: '',
     minPrice: 0,
     maxPrice: 0,
@@ -27,20 +27,28 @@ export class ListingSearch extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state);
   };
 
   render() {
-    const { buy, location } = this.state;
+    const { location, method } = this.state;
 
     return (
       <StyledListingSearch as="form" onSubmit={this.handleSubmit}>
         <div>
-          <TabButton active={buy} onClick={() => this.setState({ buy: true })}>
+          <TabButton
+            active={method === 'buy'}
+            name="method"
+            value="buy"
+            onClick={this.handleChange}
+          >
             Buy
           </TabButton>
           <TabButton
-            active={!buy}
-            onClick={() => this.setState({ buy: false })}
+            active={method === 'rent'}
+            name="method"
+            value="rent"
+            onClick={this.handleChange}
           >
             Rent
           </TabButton>

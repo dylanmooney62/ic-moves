@@ -5,6 +5,11 @@ import CustomInput from '../shared/CustomInput';
 import CustomSelect from '../shared/CustomSelect';
 import TabButton from './TabButton';
 import SearchButton from './SearchButton';
+import {
+  MIN_PRICE_OPTIONS,
+  MAX_PRICE_OPTIONS,
+  BEDROOM_OPTIONS,
+} from './options';
 
 export class ListingSearch extends Component {
   state = {
@@ -17,7 +22,6 @@ export class ListingSearch extends Component {
 
   handleChange = (e) => {
     const { value, name } = e.target;
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
@@ -48,23 +52,30 @@ export class ListingSearch extends Component {
               name="location"
               id="location"
               value={location}
+              placeholder="e.g Glasgow, GLS or 'Bellgrove'"
               type="text"
               onChange={this.handleChange}
             />
             <CustomSelect
               label="Min Price"
+              id="minPrice"
+              name="minPrice"
               onChange={this.handleChange}
-              options={[]}
+              options={MIN_PRICE_OPTIONS}
             />
             <CustomSelect
               label="Max Price"
+              id="maxPrice"
+              name="maxPrice"
               onChange={this.handleChange}
-              options={[]}
+              options={MAX_PRICE_OPTIONS}
             />
             <CustomSelect
               label="Bedrooms"
+              id="minBedroom"
+              name="minBedroom"
               onChange={this.handleChange}
-              options={[]}
+              options={BEDROOM_OPTIONS}
             />
           </FormGroup>
           <SearchButton />

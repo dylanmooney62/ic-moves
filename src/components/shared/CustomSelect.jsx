@@ -8,8 +8,10 @@ const CustomSelect = ({ label, id, options, ...otherProps }) => (
     {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
     <StyledChevron />
     <StyledSelect id={id} {...otherProps}>
-      {options.map((option) => (
-        <option value={option}>{option}</option>
+      {options.map(({ option, value }) => (
+        <option value={value} key={`${id}-${value}`}>
+          {option}
+        </option>
       ))}
     </StyledSelect>
   </SelectContainer>
@@ -17,7 +19,8 @@ const CustomSelect = ({ label, id, options, ...otherProps }) => (
 
 CustomSelect.propTypes = {
   onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default CustomSelect;

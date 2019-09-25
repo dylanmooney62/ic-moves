@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Logo } from '../assets/icons/logo-white.svg';
+import { ReactComponent as Logo } from '../../assets/icons/logo-white.svg';
 import { Link } from 'react-router-dom';
 
 const Navigation = () => (

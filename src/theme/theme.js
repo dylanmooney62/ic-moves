@@ -58,6 +58,10 @@ const theme = {
     md: '0.3rem',
     lg: '0.5rem',
   },
+  shadow: {
+    '1':
+      '0 0.938rem 2.188rem rgba(50, 50, 93, 0.1), 0 0.313rem 0.938rem rgba(0, 0, 0, 0.07)',
+  },
 };
 
 export default theme;

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import heroImage from '../assets/images/hero-image.jpeg';
-import Container from './common/Container';
+import heroImage from '../../assets/images/hero-image.jpeg';
+import Container from '../shared/Container';
 import Navigation from './Navigation';
 
 const Header = () => (
   <StyledHeader>
     <Navigation />
-    <Container maxWidth="sm">
+    <Container>
       <TextBox>
         <Title>Find your dream home</Title>
         <Subtitle>

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const CustomInput = ({ label, id, ...otherProps }) => (
-  <FormGroup>
+  <InputContainer>
     {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
     <StyledInput id={id} {...otherProps} />
-  </FormGroup>
+  </InputContainer>
 );
 
 CustomInput.propTypes = {
@@ -16,10 +16,9 @@ CustomInput.propTypes = {
 
 export default CustomInput;
 
-const FormGroup = styled.div`
+const InputContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
-  margin-bottom: ${(props) => props.theme.spacing.sm};
 `;
 
 const StyledLabel = styled.label`
@@ -34,7 +33,7 @@ const StyledInput = styled.input`
   font-size: ${(props) => props.theme.typography.size.sm};
   font-family: ${(props) => props.theme.typography.family};
   color: ${(props) => props.theme.palette.neutral['500']};
-  border: 0.1rem solid ${(props) => props.theme.palette.primary['300']};
+  border: 0.1rem solid ${(props) => props.theme.palette.primary['200']};
 
   ::placeholder {
     color: ${(props) => props.theme.palette.neutral['200']};

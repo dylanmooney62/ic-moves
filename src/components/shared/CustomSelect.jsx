@@ -5,7 +5,7 @@ import { ReactComponent as Chevron } from '../../assets/icons/chevron-down.svg';
 
 const CustomSelect = ({ label, id, options, ...otherProps }) => (
   <SelectContainer>
-    {label && <StyledLabel htmlFor={id}>Min Price</StyledLabel>}
+    {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
     <StyledChevron />
     <StyledSelect id={id} {...otherProps}>
       {options.map((option) => (
@@ -16,6 +16,7 @@ const CustomSelect = ({ label, id, options, ...otherProps }) => (
 );
 
 CustomSelect.propTypes = {
+  onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
@@ -59,7 +60,7 @@ const StyledSelect = styled.select`
   padding-right: 4.4rem;
   font-size: ${(props) => props.theme.typography.size.sm};
   font-family: ${(props) => props.theme.typography.family};
-  border: 0.1rem solid ${(props) => props.theme.palette.primary['300']};
+  border: 0.1rem solid ${(props) => props.theme.palette.primary['200']};
   border-radius: 0;
   height: 3.6rem;
   width: 20rem;
@@ -69,6 +70,6 @@ const StyledSelect = styled.select`
   cursor: pointer;
 
   :focus {
-    outline: 0.1rem solid ${(props) => props.theme.palette.primary['400']};
+    outline: 0.1rem solid ${(props) => props.theme.palette.primary['300']};
   }
 `;

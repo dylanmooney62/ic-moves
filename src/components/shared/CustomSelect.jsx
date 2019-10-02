@@ -34,8 +34,8 @@ const SelectContainer = styled.div`
     content: '';
     position: absolute;
     background-color: ${(props) => props.theme.palette.secondary['100']};
-    height: 3.6rem;
-    width: 3.6rem;
+    height: 3.8rem;
+    width: 3.8rem;
     bottom: 0;
     right: 0;
     pointer-events: none;
@@ -61,11 +61,11 @@ const StyledLabel = styled.label`
 const StyledSelect = styled.select`
   padding-left: ${(props) => props.theme.spacing.xs};
   padding-right: 4.4rem;
-  font-size: ${(props) => props.theme.typography.size.sm};
+  font-size: ${(props) => props.theme.typography.size.base};
   font-family: ${(props) => props.theme.typography.family};
   border: 0.1rem solid ${(props) => props.theme.palette.primary['200']};
   border-radius: 0;
-  height: 3.6rem;
+  height: 3.8rem;
   width: 20rem;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;

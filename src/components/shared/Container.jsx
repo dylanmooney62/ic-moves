@@ -7,6 +7,10 @@ const Container = styled.div`
   position: relative;
   max-width: ${(props) => (props.maxWidth === 'sm' ? '100rem' : undefined)};
   max-width: ${(props) => (props.maxWidth === 'lg' ? '120rem' : undefined)};
+
+  @media only screen and (max-width: 1240px) {
+    width: 95%;
+  }
 `;
 
 Container.propTypes = {

@@ -30,7 +30,7 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input`
   width: 24rem;
   padding: ${(props) => props.theme.spacing.xs};
-  font-size: ${(props) => props.theme.typography.size.sm};
+  font-size: ${(props) => props.theme.typography.size.base};
   font-family: ${(props) => props.theme.typography.family};
   color: ${(props) => props.theme.palette.neutral['500']};
   border: 0.1rem solid ${(props) => props.theme.palette.primary['200']};

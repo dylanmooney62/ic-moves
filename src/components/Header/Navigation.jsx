@@ -36,6 +36,10 @@ const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 1240px) {
+    width: 95%;
+  }
 `;
 
 const NavigationList = styled.ul`

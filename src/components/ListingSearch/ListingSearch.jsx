@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Container from '../shared/Container';
-import CustomInput from '../shared/CustomInput';
-import CustomSelect from '../shared/CustomSelect';
-import TabButton from './TabButton';
-import SearchButton from './SearchButton';
-import { ReactComponent as Chevron } from '../../assets/icons/chevron-down.svg';
 
-import {
-  MIN_PRICE_OPTIONS,
-  MAX_PRICE_OPTIONS,
-  BEDROOM_OPTIONS,
-} from './options';
+import BasicForm from './BasicForm';
+import AdvancedForm from './AdvancedForm';
+import CustomButton from '../shared/CustomButton';
+import Tab from '../shared/Tab';
+import Box from '../shared/Box';
+
+import { ReactComponent as Search } from '../../assets/icons/search-icon.svg';
 
 export class ListingSearch extends Component {
   state = {
-    method: 'buy',
+    type: 'buy',
     location: '',
     minPrice: 0,
     maxPrice: 0,
     minBedroom: 0,
-    advancedSearch: false,
+    maxBedroom: 0,
+    minBathroom: 0,
+    maxBathroom: 0,
+    keywords: '',
+    showAdvancedForm: false,
   };
 
-  toggleAdvancedSearch = () => {
+  handleToggle = () => {
     this.setState((prevState) => ({
-      advancedSearch: !prevState.advancedSearch,
+      showAdvancedForm: !prevState.showAdvancedForm,
     }));
   };
 
@@ -40,70 +40,49 @@ export class ListingSearch extends Component {
   };
 
   render() {
-    const { location, method } = this.state;
+    const { type, location, keywords, showAdvancedForm } = this.state;
 
     return (
       <StyledListingSearch as="form" onSubmit={this.handleSubmit}>
-        <div>
-          <TabButton
-            active={method === 'buy'}
-            name="method"
+        <Box>
+          <Tab
+            active={type === 'buy'}
+            name="type"
             value="buy"
             onClick={this.handleChange}
           >
             Buy
-          </TabButton>
-          <TabButton
-            active={method === 'rent'}
-            name="method"
+          </Tab>
+          <Tab
+            active={type === 'rent'}
+            name="type"
             value="rent"
             onClick={this.handleChange}
           >
             Rent
-          </TabButton>
-        </div>
-        <MainForm>
-          <FormGroup>
-            <StyledCustomInput
-              label="Location"
-              name="location"
-              id="location"
-              value={location}
-              placeholder="e.g Glasgow, GLS or 'Bellgrove'"
-              type="text"
+          </Tab>
+        </Box>
+        <FormContainer
+          width="100%"
+          display="flex"
+          justifyContent="space-between"
+        >
+          <Box shadow={1} flexGrow={1}>
+            <BasicForm
+              location={location}
+              onChange={this.handleChange}
+              onToggle={this.handleToggle}
+            />
+            <AdvancedForm
+              active={showAdvancedForm}
+              keywords={keywords}
               onChange={this.handleChange}
             />
-            <Divider />
-            <StyledCustomSelect
-              label="Min Price"
-              id="minPrice"
-              name="minPrice"
-              onChange={this.handleChange}
-              options={MIN_PRICE_OPTIONS}
-            />
-            <Divider />
-            <StyledCustomSelect
-              label="Max Price"
-              id="maxPrice"
-              name="maxPrice"
-              onChange={this.handleChange}
-              options={MAX_PRICE_OPTIONS}
-            />
-            <Divider />
-            <StyledCustomSelect
-              label="Bedrooms"
-              id="minBedroom"
-              name="minBedroom"
-              onChange={this.handleChange}
-              options={BEDROOM_OPTIONS}
-            />
-            <AdvancedSearchButton onClick={this.toggleAdvancedSearch}>
-              Advanced Search
-              <StyledChevron />
-            </AdvancedSearchButton>
-          </FormGroup>
-          <SearchButton />
-        </MainForm>
+          </Box>
+          <SearchButton onClick={this.handleSubmit}>
+            Search <StyledSearch />
+          </SearchButton>
+        </FormContainer>
       </StyledListingSearch>
     );
   }
@@ -111,80 +90,47 @@ export class ListingSearch extends Component {
 
 export default ListingSearch;
 
-const StyledListingSearch = styled(Container)`
-  transform: translateY(-10rem);
+const StyledListingSearch = styled.div`
+  max-width: 120rem;
+  margin: 0 auto;
+  transform: translateY(-10.7rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: ${(props) => props.theme.shadow['1']};
+  border-radius: ${(props) => props.theme.radius.md};
 
   @media only screen and (max-width: 1240px) {
     max-width: 70rem;
   }
 `;
 
-const MainForm = styled.div`
-  background-color: #ffffff;
-  width: 100%;
+const FormContainer = styled(Box)`
+  @media only screen and (max-width: 1240px) {
+    flex-direction: column;
+  }
+`;
+
+const SearchButton = styled(CustomButton)`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-radius: ${(props) => props.theme.radius.md};
+  justify-content: center;
+  font-size: ${(props) => props.theme.typography.size.lg};
+  width: 16.5rem;
+  max-height: 12.8rem;
+  border-top-right-radius: ${(props) => props.theme.radius.md};
+  border-bottom-right-radius: ${(props) => props.theme.radius.md};
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: ${(props) => props.theme.shadow['1']};
 
-  @media only screen and (max-width: 1240px) {
-    flex-direction: column;
-  }
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
-  padding-top: ${(props) => props.theme.spacing['xl']};
-  padding-bottom: 3.8rem;
-  padding-left: ${(props) => props.theme.spacing['xl']};
-  padding-right: ${(props) => props.theme.spacing['xl']};
-  flex-wrap: wrap;
-  position: relative;
-
-  @media only screen and (max-width: 1240px) {
-    flex-direction: column;
-    width: 100%;
-  }
-`;
-
-const StyledCustomInput = styled(CustomInput)`
   @media only screen and (max-width: 1240px) {
     width: 100%;
+    padding-top: ${(props) => props.theme.spacing.xl};
+    padding-bottom: ${(props) => props.theme.spacing.xl};
   }
 `;
 
-const StyledCustomSelect = styled(CustomSelect)`
-  @media only screen and (max-width: 1240px) {
-    width: 100%;
-  }
-`;
-
-const AdvancedSearchButton = styled.button`
-  all: unset;
-  position: absolute;
-  bottom: ${(props) => props.theme.spacing.xs};
-  cursor: pointer;
-  font-size: ${(props) => props.theme.typography.size.xs};
-  color: ${(props) => props.theme.palette.neutral['300']};
-`;
-
-const Divider = styled.div`
-  display: none;
-
-  @media only screen and (max-width: 1240px) {
-    display: block;
-    margin-bottom: ${(props) => props.theme.spacing.lg};
-  }
-`;
-
-const StyledChevron = styled(Chevron)`
-  fill: ${(props) => props.theme.palette.primary['500']};
-  margin-left: ${(props) => props.theme.spacing['2xs']};
+const StyledSearch = styled(Search)`
+  margin-left: ${(props) => props.theme.spacing.sm};
 `;

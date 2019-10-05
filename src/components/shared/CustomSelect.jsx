@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { ReactComponent as Chevron } from '../../assets/icons/chevron-down.svg';
 
-const CustomSelect = ({ label, id, options, ...otherProps }) => (
-  <SelectContainer>
+const CustomSelect = ({ label, id, options, className, ...otherProps }) => (
+  <SelectContainer className={className}>
     {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
     <StyledChevron />
     <StyledSelect id={id} {...otherProps}>
@@ -26,9 +26,10 @@ CustomSelect.propTypes = {
 export default CustomSelect;
 
 const SelectContainer = styled.div`
-  display: inline-flex;
+  display: flex;
   position: relative;
   flex-direction: column;
+  width: 20rem;
 
   ::after {
     content: '';
@@ -61,12 +62,12 @@ const StyledLabel = styled.label`
 const StyledSelect = styled.select`
   padding-left: ${(props) => props.theme.spacing.xs};
   padding-right: 4.4rem;
-  font-size: ${(props) => props.theme.typography.size.base};
+  font-size: ${(props) => props.theme.typography.size.sm};
   font-family: ${(props) => props.theme.typography.family};
   border: 0.1rem solid ${(props) => props.theme.palette.primary['200']};
   border-radius: 0;
   height: 3.8rem;
-  width: 20rem;
+  width: 100%;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
   background-color: #ffffff;

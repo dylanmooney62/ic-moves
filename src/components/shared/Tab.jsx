@@ -13,6 +13,8 @@ const TabButton = styled.button`
   border-top: 0.3rem solid transparent;
   display: inline-block;
   cursor: pointer;
+  position: relative;
+  z-index: 100;
 
   :focus {
     outline: none;

@@ -9,7 +9,7 @@ const Container = styled.div`
   max-width: ${(props) => (props.maxWidth === 'lg' ? '120rem' : undefined)};
 
   @media only screen and (max-width: 1240px) {
-    width: 95%;
+    width: 90%;
   }
 `;
 

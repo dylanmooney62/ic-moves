@@ -6,7 +6,6 @@ import Header from '../components/Header/Header';
 import ListingSearch from '../components/ListingSearch/ListingSearch';
 import PropertyCardList from '../components/PropertyCardList';
 import properties from '../temp/listings.json';
-import Section from '../components/shared/Section';
 
 const Home = () => {
   return (
@@ -31,6 +30,7 @@ const Title = styled.h2`
   margin-bottom: ${(props) => props.theme.spacing['3xl']};
 `;
 
-const FeaturedSection = styled(Section)`
+const FeaturedSection = styled.section`
   margin-top: -15rem;
+  padding: 15rem 0;
 `;

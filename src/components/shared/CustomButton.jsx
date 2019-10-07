@@ -5,14 +5,15 @@ const CustomButton = styled.button`
   color: #ffffff;
   padding-top: ${(props) => props.theme.spacing.sm};
   padding-bottom: ${(props) => props.theme.spacing.sm};
-  padding-left: ${(props) => props.theme.spacing.xl};
-  padding-right: ${(props) => props.theme.spacing.xl};
+  padding-left: ${(props) => props.theme.spacing['2xl']};
+  padding-right: ${(props) => props.theme.spacing['2xl']};
   transition: background-color 0.3s ease-in-out;
   border: none;
   border-radius: ${(props) => props.theme.radius.md};
   font-family: inherit;
   font-size: ${(props) => props.theme.typography.size.base};
   cursor: pointer;
+  text-decoration: none;
 
   &:focus {
     outline: none;

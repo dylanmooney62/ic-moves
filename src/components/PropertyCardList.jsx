@@ -14,15 +14,18 @@ const PropertyCardList = ({ properties, limit }) => {
         {properties
           .filter((i, idx) => idx < limit)
           .map(
-            ({
-              img_url,
-              property_type,
-              price_formatted,
-              title,
-              bedroom_number,
-              bathroom_number,
-            }) => (
-              <ListItem>
+            (
+              {
+                img_url,
+                property_type,
+                price_formatted,
+                title,
+                bedroom_number,
+                bathroom_number,
+              },
+              idx,
+            ) => (
+              <ListItem key={idx}>
                 <PropertyCard
                   imageUrl={img_url}
                   type={property_type}

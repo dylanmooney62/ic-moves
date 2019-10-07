@@ -122,6 +122,8 @@ const SearchButton = styled(CustomButton)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   box-shadow: ${(props) => props.theme.shadow['1']};
+  padding-left: ${(props) => props.theme.spacing.xl};
+  padding-right: ${(props) => props.theme.spacing.xl};
 
   @media only screen and (max-width: 1240px) {
     width: 100%;

@@ -6,6 +6,7 @@ import Header from '../components/Header/Header';
 import ListingSearch from '../components/ListingSearch/ListingSearch';
 import PropertyCardList from '../components/PropertyCardList';
 import properties from '../temp/listings.json';
+import LearnMore from '../components/LearnMore';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <Title>Featured Properties</Title>
         <PropertyCardList properties={properties.listings} limit={3} />
       </FeaturedSection>
+      <LearnMore />
     </>
   );
 };

@@ -57,7 +57,8 @@ PropertyCard.propTypes = {
   price: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   bedrooms: PropTypes.number.isRequired,
-  bathrooms: PropTypes.number.isRequired,
+  bathrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
 };
 
 export default PropertyCard;

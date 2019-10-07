@@ -36,13 +36,13 @@ const PropertyCard = ({
         <Box display="flex" alignItems="center">
           <StyledBedIcon />
           <DetailText>
-            <Bold>{bedrooms}</Bold> Bedrooms
+            <Bold>{bedrooms}</Bold> Bedroom{bedrooms > 1 && 's'}
           </DetailText>
         </Box>
         <Box display="flex" alignItems="center">
           <StyledBathIcon />
           <DetailText>
-            <Bold>{bathrooms || 1}</Bold> Bathrooms
+            <Bold>{bathrooms || 1}</Bold> Bathroom{bathrooms > 1 && 's'}
           </DetailText>
         </Box>
       </Divider>

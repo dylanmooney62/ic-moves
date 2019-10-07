@@ -56,6 +56,25 @@ const StyledPropertyCardList = styled.ul`
   grid-gap: ${(props) => props.theme.spacing['2xl']};
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 1240px) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 70rem;
+
+    li:nth-child(3) {
+      grid-column: 1/3;
+    }
+  }
+
+  @media only screen and (max-width: 740px) {
+    grid-template-columns: 1fr;
+
+    li:nth-child(3) {
+      display: flex;
+      grid-column: 1/2;
+    }
+  }
 `;
 
 const ListItem = styled.li`

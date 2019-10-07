@@ -101,6 +101,7 @@ const StyledListingSearch = styled.div`
 
   @media only screen and (max-width: 1240px) {
     max-width: 70rem;
+    width: 90%;
   }
 `;
 

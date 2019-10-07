@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import { ReactComponent as LocationIcon } from '../assets/icons/location.svg';
 import { ReactComponent as BedIcon } from '../assets/icons/bed.svg';
 import { ReactComponent as BathIcon } from '../assets/icons/bath.svg';
+
 import CustomButton from './shared/CustomButton';
+import Box from './shared/Box';
 
 const PropertyCard = ({
   imageUrl,
@@ -23,24 +25,24 @@ const PropertyCard = ({
       <Divider>
         <Title>{title}</Title>
         <Price>£{price}</Price>
-        <FlexContainer>
+        <Box display="flex" alignItems="center">
           <LocationIcon />
           <LocationText>{location}</LocationText>
-        </FlexContainer>
+        </Box>
       </Divider>
       <Divider alternate>
-        <FlexContainer>
+        <Box display="flex" alignItems="center">
           <StyledBedIcon />
           <DetailText>
             <Bold>{bedrooms}</Bold> Bedrooms
           </DetailText>
-        </FlexContainer>
-        <FlexContainer>
+        </Box>
+        <Box display="flex" alignItems="center">
           <StyledBathIcon />
           <DetailText>
             <Bold>{bathrooms}</Bold> Bathrooms
           </DetailText>
-        </FlexContainer>
+        </Box>
       </Divider>
       <PropertyButton>View Property</PropertyButton>
     </PropertyCardContainer>
@@ -50,7 +52,7 @@ const PropertyCard = ({
 PropertyCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   bedrooms: PropTypes.number.isRequired,
   bathrooms: PropTypes.number.isRequired,
@@ -106,11 +108,6 @@ const Price = styled.div`
   color: ${(props) => props.theme.palette.neutral['600']};
   margin-bottom: ${(props) => props.theme.spacing.xs};
   letter-spacing: 0.1rem;
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 const LocationText = styled.span`

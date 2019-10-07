@@ -11,7 +11,7 @@ import Box from './shared/Box';
 
 const PropertyCard = ({
   imageUrl,
-  title,
+  type,
   price,
   location,
   bedrooms,
@@ -20,11 +20,13 @@ const PropertyCard = ({
   return (
     <PropertyCardContainer>
       <ImgContainer>
-        <PropertyImg src={imageUrl} alt={title} />
+        <PropertyImg src={imageUrl} alt={type} />
       </ImgContainer>
       <Divider>
-        <Title>{title}</Title>
-        <Price>£{price}</Price>
+        <Title>
+          {bedrooms} Bedroom{bedrooms > 1 && 's'} {type}
+        </Title>
+        <Price>{price}</Price>
         <Box display="flex" alignItems="center">
           <LocationIcon />
           <LocationText>{location}</LocationText>
@@ -40,7 +42,7 @@ const PropertyCard = ({
         <Box display="flex" alignItems="center">
           <StyledBathIcon />
           <DetailText>
-            <Bold>{bathrooms}</Bold> Bathrooms
+            <Bold>{bathrooms || 1}</Bold> Bathrooms
           </DetailText>
         </Box>
       </Divider>
@@ -51,7 +53,7 @@ const PropertyCard = ({
 
 PropertyCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   bedrooms: PropTypes.number.isRequired,
@@ -62,7 +64,7 @@ export default PropertyCard;
 
 const PropertyCardContainer = styled.div`
   width: 100%;
-  max-width: 30rem;
+  max-width: 31rem;
   border-radius: ${(props) => props.theme.radius.md};
   box-shadow: ${(props) => props.theme.shadow['1']};
   overflow: hidden;

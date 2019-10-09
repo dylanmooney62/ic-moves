@@ -11,7 +11,12 @@ import LearnMore from '../components/LearnMore';
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header
+        title="Find your dream home"
+        subtitle="Search properties for sale and to rent in the UK"
+        height="lg"
+        textAlign="left"
+      />
       <ListingSearch />
       <FeaturedSection>
         <Title>Featured Properties</Title>

@@ -12,7 +12,7 @@ import {
   MIN_ROOM_OPTIONS,
 } from './options';
 
-const MainForm = ({ location, onChange, onToggle }) => {
+const MainForm = ({ formData, errors, onChange, onToggle }) => {
   const handleChange = (e) => {
     onChange(e);
   };
@@ -28,15 +28,17 @@ const MainForm = ({ location, onChange, onToggle }) => {
         label="Location"
         name="location"
         id="location"
-        value={location}
-        placeholder="e.g Glasgow, GLS or 'Bellgrove'"
+        value={formData.location}
+        placeholder={errors.location || "e.g Glasgow, GLS or 'Bellgrove"}
         type="text"
         onChange={handleChange}
+        error={errors.location}
       />
       <StyledCustomSelect
         label="Min Price"
         id="minPrice"
         name="minPrice"
+        value={formData.minPrice}
         onChange={handleChange}
         options={MIN_PRICE_OPTIONS}
       />
@@ -44,6 +46,7 @@ const MainForm = ({ location, onChange, onToggle }) => {
         label="Max Price"
         id="maxPrice"
         name="maxPrice"
+        value={formData.maxPrice}
         onChange={handleChange}
         options={MAX_PRICE_OPTIONS}
       />
@@ -51,6 +54,7 @@ const MainForm = ({ location, onChange, onToggle }) => {
         label="Bedrooms"
         id="minBedroom"
         name="minBedroom"
+        value={formData.minBedroom}
         onChange={handleChange}
         options={MIN_ROOM_OPTIONS}
       />

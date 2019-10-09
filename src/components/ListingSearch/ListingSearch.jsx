@@ -10,6 +10,8 @@ import Box from '../shared/Box';
 
 import { ReactComponent as Search } from '../../assets/icons/search-icon.svg';
 
+import { camelToUnderscore } from '../../utils/utils';
+
 export class ListingSearch extends Component {
   state = {
     formData: {
@@ -22,6 +24,9 @@ export class ListingSearch extends Component {
       minBathroom: 0,
       maxBathroom: 0,
       keywords: '',
+    },
+    errors: {
+      location: '',
     },
     showAdvancedForm: false,
   };
@@ -36,8 +41,7 @@ export class ListingSearch extends Component {
     const { name } = e.target;
     let { value } = e.target;
 
-    // check if is number for custom select options
-    if (!isNaN(value)) {
+    if (!isNaN(parseInt(value, 10))) {
       value = parseInt(value, 10);
     }
 
@@ -51,36 +55,50 @@ export class ListingSearch extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { formData } = this.state;
     const { history } = this.props;
 
-    // returns a string of search params for inputs the user has filled in
-    const searchParams = Object.keys(formData)
-      .filter((key) => formData[key])
-      .map((key) => {
-        return `${key}=${formData[key]}`;
-      })
-      .join('&');
+    if (formData.location) {
+      // returns a string of search params for inputs the user has filled in
+      const searchParams = Object.keys(formData)
+        .filter((key) => formData[key])
+        .map((key) => {
+          return `${camelToUnderscore(key)}=${formData[key]}`;
+        })
+        .join('&');
 
-    history.push({
-      pathname: '/listings',
-      search: `?${searchParams}`,
-    });
+      history.push({
+        pathname: '/listings',
+        search: `?${searchParams}`,
+      });
+    } else {
+      this.setState((prevState) => ({
+        errors: {
+          ...prevState.errors,
+          location: 'Please enter a location',
+        },
+      }));
+
+      setTimeout(() => {
+        this.setState((prevState) => ({
+          errors: {
+            ...prevState.errors,
+            location: '',
+          },
+        }));
+      }, 3000);
+    }
   };
 
   render() {
-    const {
-      formData: { type, location, keywords },
-      showAdvancedForm,
-    } = this.state;
+    const { formData, showAdvancedForm, errors } = this.state;
 
     return (
       <StyledListingSearch as="form" onSubmit={this.handleSubmit}>
         <Box>
           <Tab
             type="button"
-            active={type === 'buy'}
+            active={formData.type === 'buy'}
             name="type"
             value="buy"
             onClick={this.handleChange}
@@ -89,7 +107,7 @@ export class ListingSearch extends Component {
           </Tab>
           <Tab
             type="button"
-            active={type === 'rent'}
+            active={formData.type === 'rent'}
             name="type"
             value="rent"
             onClick={this.handleChange}
@@ -104,13 +122,14 @@ export class ListingSearch extends Component {
         >
           <Box shadow={1} flexGrow={1}>
             <BasicForm
-              location={location}
+              formData={formData}
               onChange={this.handleChange}
               onToggle={this.handleToggle}
+              errors={errors}
             />
             <AdvancedForm
+              formData={formData}
               active={showAdvancedForm}
-              keywords={keywords}
               onChange={this.handleChange}
             />
           </Box>

@@ -6,7 +6,7 @@ import CustomInput from '../shared/CustomInput';
 
 import { MAX_ROOM_OPTIONS, MIN_ROOM_OPTIONS } from './options';
 
-const AdvancedForm = ({ active, keywords, onChange }) => {
+const AdvancedForm = ({ formData, active, onChange }) => {
   const handleChange = (e) => {
     onChange(e);
   };
@@ -17,6 +17,7 @@ const AdvancedForm = ({ active, keywords, onChange }) => {
         label="Max Bedrooms"
         id="maxBedroom"
         name="maxBedroom"
+        value={formData.maxBedroom}
         onChange={handleChange}
         options={MAX_ROOM_OPTIONS}
       />
@@ -24,6 +25,7 @@ const AdvancedForm = ({ active, keywords, onChange }) => {
         label="Min Bathrooms"
         id="minBathroom"
         name="minBathroom"
+        value={formData.minBathroom}
         onChange={handleChange}
         options={MIN_ROOM_OPTIONS}
       />
@@ -31,6 +33,7 @@ const AdvancedForm = ({ active, keywords, onChange }) => {
         label="Max Bathrooms"
         id="maxBathroom"
         name="maxBathroom"
+        value={formData.maxBathrrom}
         onChange={handleChange}
         options={MAX_ROOM_OPTIONS}
       />
@@ -38,9 +41,9 @@ const AdvancedForm = ({ active, keywords, onChange }) => {
         label="Keywords"
         name="keywords"
         id="keywords"
-        value={keywords}
         placeholder="'Garden' or 'Gym'"
         type="text"
+        value={formData.keywords}
         onChange={handleChange}
       />
     </StyledAdvancedForm>

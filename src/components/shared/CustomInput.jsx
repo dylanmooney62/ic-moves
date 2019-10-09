@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CustomInput = ({ label, id, className, ...otherProps }) => (
+const CustomInput = ({ label, id, className, error, ...otherProps }) => (
   <InputContainer className={className}>
     {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
-    <StyledInput id={id} {...otherProps} />
+    <StyledInput id={id} {...otherProps} error={error} />
   </InputContainer>
 );
 
@@ -35,6 +35,16 @@ const StyledInput = styled.input`
   font-family: ${(props) => props.theme.typography.family};
   color: ${(props) => props.theme.palette.neutral['500']};
   border: 0.1rem solid ${(props) => props.theme.palette.primary['200']};
+
+  ${(props) =>
+    props.error &&
+    css`
+      border: 0.1rem solid #f43b47;
+
+      &&::placeholder {
+        color: #f43b47;
+      }
+    `}
 
   ::placeholder {
     color: ${(props) => props.theme.palette.neutral['300']};

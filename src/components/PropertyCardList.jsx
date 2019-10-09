@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import Container from './shared/Container';
 
 const PropertyCardList = ({ properties, limit }) => {
-  console.log(properties);
-
   return (
     <Container maxWidth="sm">
       <StyledPropertyCardList>

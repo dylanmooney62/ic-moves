@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router';
 
 import BasicForm from './BasicForm';
 import AdvancedForm from './AdvancedForm';
@@ -11,15 +12,17 @@ import { ReactComponent as Search } from '../../assets/icons/search-icon.svg';
 
 export class ListingSearch extends Component {
   state = {
-    type: 'buy',
-    location: '',
-    minPrice: 0,
-    maxPrice: 0,
-    minBedroom: 0,
-    maxBedroom: 0,
-    minBathroom: 0,
-    maxBathroom: 0,
-    keywords: '',
+    formData: {
+      type: 'buy',
+      location: '',
+      minPrice: 0,
+      maxPrice: 0,
+      minBedroom: 0,
+      maxBedroom: 0,
+      minBathroom: 0,
+      maxBathroom: 0,
+      keywords: '',
+    },
     showAdvancedForm: false,
   };
 
@@ -30,22 +33,53 @@ export class ListingSearch extends Component {
   };
 
   handleChange = (e) => {
-    const { value, name } = e.target;
-    this.setState({ [name]: value });
+    const { name } = e.target;
+    let { value } = e.target;
+
+    // check if is number for custom select options
+    if (!isNaN(value)) {
+      value = parseInt(value, 10);
+    }
+
+    this.setState((prevState) => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value,
+      },
+    }));
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+
+    const { formData } = this.state;
+    const { history } = this.props;
+
+    // returns a string of search params for inputs the user has filled in
+    const searchParams = Object.keys(formData)
+      .filter((key) => formData[key])
+      .map((key) => {
+        return `${key}=${formData[key]}`;
+      })
+      .join('&');
+
+    history.push({
+      pathname: '/listings',
+      search: `?${searchParams}`,
+    });
   };
 
   render() {
-    const { type, location, keywords, showAdvancedForm } = this.state;
+    const {
+      formData: { type, location, keywords },
+      showAdvancedForm,
+    } = this.state;
 
     return (
       <StyledListingSearch as="form" onSubmit={this.handleSubmit}>
         <Box>
           <Tab
+            type="button"
             active={type === 'buy'}
             name="type"
             value="buy"
@@ -54,6 +88,7 @@ export class ListingSearch extends Component {
             Buy
           </Tab>
           <Tab
+            type="button"
             active={type === 'rent'}
             name="type"
             value="rent"
@@ -88,7 +123,7 @@ export class ListingSearch extends Component {
   }
 }
 
-export default ListingSearch;
+export default withRouter(ListingSearch);
 
 const StyledListingSearch = styled.div`
   max-width: 120rem;

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router';
 
+import { camelToUnderscore } from '../../utils/utils';
+import qs from 'query-string';
+import camelcaseKeys from 'camelcase-keys';
+
 import BasicForm from './BasicForm';
 import AdvancedForm from './AdvancedForm';
 import CustomButton from '../shared/CustomButton';
@@ -9,8 +13,6 @@ import Tab from '../shared/Tab';
 import Box from '../shared/Box';
 
 import { ReactComponent as Search } from '../../assets/icons/search-icon.svg';
-
-import { camelToUnderscore } from '../../utils/utils';
 
 export class ListingSearch extends Component {
   state = {
@@ -31,6 +33,21 @@ export class ListingSearch extends Component {
     showAdvancedForm: false,
   };
 
+  componentDidMount() {
+    const { location } = this.props;
+
+    // fills form values with query params
+    if (location.search) {
+      const queryFormData = camelcaseKeys(qs.parse(location.search));
+      this.setState((prevState) => ({
+        formData: {
+          ...prevState.formData,
+          ...queryFormData,
+        },
+      }));
+    }
+  }
+
   handleToggle = () => {
     this.setState((prevState) => ({
       showAdvancedForm: !prevState.showAdvancedForm,
@@ -41,6 +58,7 @@ export class ListingSearch extends Component {
     const { name } = e.target;
     let { value } = e.target;
 
+    // ensures data from selects is converted to integers
     if (!isNaN(parseInt(value, 10))) {
       value = parseInt(value, 10);
     }
@@ -72,22 +90,26 @@ export class ListingSearch extends Component {
         search: `?${searchParams}`,
       });
     } else {
+      this._toggleError('location', 'Please enter a location');
+    }
+  };
+
+  _toggleError = (error, msg) => {
+    this.setState((prevState) => ({
+      errors: {
+        ...prevState.errors,
+        [error]: msg,
+      },
+    }));
+
+    setTimeout(() => {
       this.setState((prevState) => ({
         errors: {
           ...prevState.errors,
-          location: 'Please enter a location',
+          [error]: '',
         },
       }));
-
-      setTimeout(() => {
-        this.setState((prevState) => ({
-          errors: {
-            ...prevState.errors,
-            location: '',
-          },
-        }));
-      }, 3000);
-    }
+    }, 3000);
   };
 
   render() {

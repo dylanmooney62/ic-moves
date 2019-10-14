@@ -3,7 +3,7 @@ import GlobalStyle from './theme/GlobalStyle';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Listings from './pages/Listings';
+import Search from './pages/Search';
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       <GlobalStyle />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/listings" component={Listings} />
+        <Route exact path="/search" component={Search} />
       </Switch>
     </>
   );

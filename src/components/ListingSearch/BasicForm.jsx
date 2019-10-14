@@ -26,13 +26,13 @@ const MainForm = ({ formData, errors, onChange, onToggle }) => {
     <StyledMainForm>
       <StyledCustomInput
         label="Location"
-        name="location"
-        id="location"
-        value={formData.location}
-        placeholder={errors.location || "e.g Glasgow, GLS or 'Bellgrove"}
+        name="placeName"
+        id="placeName"
+        value={formData.placeName}
+        placeholder={errors.placeName || "e.g Glasgow, GLS or 'Bellgrove"}
         type="text"
         onChange={handleChange}
-        error={errors.location}
+        error={errors.placeName}
       />
       <StyledCustomSelect
         label="Min Price"

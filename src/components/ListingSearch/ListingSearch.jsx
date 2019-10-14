@@ -17,8 +17,8 @@ import { ReactComponent as Search } from '../../assets/icons/search-icon.svg';
 export class ListingSearch extends Component {
   state = {
     formData: {
-      type: 'buy',
-      location: '',
+      listingType: 'buy',
+      placeName: '',
       minPrice: 0,
       maxPrice: 0,
       minBedroom: 0,
@@ -28,7 +28,7 @@ export class ListingSearch extends Component {
       keywords: '',
     },
     errors: {
-      location: '',
+      placeName: '',
     },
     showAdvancedForm: false,
   };
@@ -76,7 +76,7 @@ export class ListingSearch extends Component {
     const { formData } = this.state;
     const { history } = this.props;
 
-    if (formData.location) {
+    if (formData.placeName) {
       // returns a string of search params for inputs the user has filled in
       const searchParams = Object.keys(formData)
         .filter((key) => formData[key])
@@ -86,11 +86,11 @@ export class ListingSearch extends Component {
         .join('&');
 
       history.push({
-        pathname: '/listings',
+        pathname: '/search',
         search: `?${searchParams}`,
       });
     } else {
-      this._toggleError('location', 'Please enter a location');
+      this._toggleError('placeName', 'Please enter a location');
     }
   };
 
@@ -120,8 +120,8 @@ export class ListingSearch extends Component {
         <Box>
           <Tab
             type="button"
-            active={formData.type === 'buy'}
-            name="type"
+            active={formData.listingType === 'buy'}
+            name="listingType"
             value="buy"
             onClick={this.handleChange}
           >
@@ -129,8 +129,8 @@ export class ListingSearch extends Component {
           </Tab>
           <Tab
             type="button"
-            active={formData.type === 'rent'}
-            name="type"
+            active={formData.listingType === 'rent'}
+            name="listingType"
             value="rent"
             onClick={this.handleChange}
           >

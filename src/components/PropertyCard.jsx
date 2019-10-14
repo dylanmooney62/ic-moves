@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { ucFirstLetter } from '../utils/utils';
 
 import { ReactComponent as LocationIcon } from '../assets/icons/location.svg';
 import { ReactComponent as BedIcon } from '../assets/icons/bed.svg';
@@ -24,7 +25,7 @@ const PropertyCard = ({
       </ImgContainer>
       <Divider>
         <Title>
-          {bedrooms} Bedroom{bedrooms > 1 && 's'} {type}
+          {bedrooms} Bedroom {ucFirstLetter(type)}
         </Title>
         <Price>{price}</Price>
         <Box display="flex" alignItems="center">
@@ -36,13 +37,13 @@ const PropertyCard = ({
         <Box display="flex" alignItems="center">
           <StyledBedIcon />
           <DetailText>
-            <Bold>{bedrooms}</Bold> Bedroom{bedrooms > 1 && 's'}
+            <Bold>{bedrooms || 1}</Bold> Bedroom
           </DetailText>
         </Box>
         <Box display="flex" alignItems="center">
           <StyledBathIcon />
           <DetailText>
-            <Bold>{bathrooms || 1}</Bold> Bathroom{bathrooms > 1 && 's'}
+            <Bold>{bathrooms || 1}</Bold> Bathroom
           </DetailText>
         </Box>
       </Divider>
@@ -56,7 +57,8 @@ PropertyCard.propTypes = {
   type: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  bedrooms: PropTypes.number.isRequired,
+  bedrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   bathrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
     .isRequired,
 };

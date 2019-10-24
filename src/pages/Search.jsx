@@ -3,6 +3,9 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import propertySearch from '../api/propertySearch';
 
+import qs from 'query-string';
+import camelcaseKeys from 'camelcase-keys';
+
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import Box from '../components/shared/Box';
@@ -13,7 +16,7 @@ import PropertyCardList from '../components/PropertyCardList';
 
 export class Listings extends Component {
   state = {
-    location: '',
+    placeName: '',
     properties: [],
     loading: true,
     message: '',
@@ -33,47 +36,88 @@ export class Listings extends Component {
     this.setState({
       loading: true,
       message: '',
+      properties: [],
     });
 
     const { location } = this.props;
+    const { placeName } = camelcaseKeys(qs.parse(location.search));
     const results = await propertySearch.get(location.search);
 
     if (results.status === 200) {
+      const statusCode = parseInt(
+        results.data.response.application_response_code,
+        10,
+      );
+
+      // codes 100-199 indicate request was valid
+      if (statusCode < 200) {
+        const properties = results.data.response.listings;
+
+        // if code is valid but there's no results setMessage
+        if (properties.length === 0) {
+          this.setState({ message: 'No results found.' });
+        }
+
+        this.setState({
+          properties,
+          location: results.data.response.locations[0].title,
+        });
+      }
+
+      // codes 200-299 indicate a bad location
+      if (statusCode >= 200 && statusCode < 299) {
+        this.setState({
+          properties: [],
+          message: 'Unknown location. Please try again.',
+          location: placeName,
+        });
+      }
+
+      // codes 900+ indicate an internal error
+      if (statusCode >= 900) {
+        this.setState({
+          properties: [],
+          message: 'Something went wrong. Please try again.',
+          location: placeName,
+        });
+      }
+
       this.setState({
-        properties: results.data.response.listings,
-        loading: false,
-      });
-    } else {
-      this.setState({
-        message: 'Please Try again',
         loading: false,
       });
     }
   }
 
   render() {
-    const { location, properties, loading } = this.state;
+    const { location, properties, loading, message } = this.state;
 
     return (
       <>
         <Header title="Listings" textAlign="center" height="md" />
         <ListingSearch />
-        <Container maxWidth="lg">
-          <Box display="flex" justifyContent="space-between">
-            <Title>
-              Property for sale in <b>{location}</b>
-            </Title>
-          </Box>
-          <Box display="flex" justifyContent="center">
-            {loading ? (
-              <div style={{ marginTop: '100px', marginBottom: '200px' }}>
-                <ClipLoader />
-              </div>
-            ) : (
-              <PropertyCardList properties={properties} limit={9} />
-            )}
-          </Box>
-        </Container>
+        <PropertiesSection>
+          <Container maxWidth="lg">
+            <Box display="flex" justifyContent="space-between">
+              <Title>
+                Property for sale in <b>{location}</b>
+              </Title>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              style={{ minHeight: '30vh' }}
+            >
+              {loading && <ClipLoader />}
+
+              {message && <ErrorMessage>{message}</ErrorMessage>}
+
+              {properties.length > 0 && (
+                <PropertyCardList properties={properties} limit={9} />
+              )}
+            </Box>
+          </Container>
+        </PropertiesSection>
       </>
     );
   }
@@ -87,4 +131,15 @@ const Title = styled.h2`
   text-align: center;
   color: ${(props) => props.theme.palette.neutral['500']};
   margin-bottom: ${(props) => props.theme.spacing['3xl']};
+`;
+
+const PropertiesSection = styled.section`
+  margin-top: -15rem;
+  padding: 15rem 0;
+`;
+
+const ErrorMessage = styled.p`
+  text-align: center;
+  font-size: ${(props) => props.theme.typography.size.base};
+  color: ${(props) => props.theme.palette.neutral['500']};
 `;

@@ -33,11 +33,13 @@ export class ListingSearch extends Component {
     showAdvancedForm: false,
   };
 
+  // fills the form with previously submitted data
   componentDidMount() {
     const { location } = this.props;
 
     // fills form values with query params
     if (location.search) {
+      // converts formData into key value pairs
       const queryFormData = camelcaseKeys(qs.parse(location.search));
       this.setState((prevState) => ({
         formData: {

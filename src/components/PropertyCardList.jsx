@@ -59,10 +59,6 @@ const StyledPropertyCardList = styled.ul`
   @media only screen and (max-width: 1240px) {
     grid-template-columns: 1fr 1fr;
     max-width: 70rem;
-
-    li:nth-child(3) {
-      grid-column: 1/3;
-    }
   }
 
   @media only screen and (max-width: 740px) {

@@ -16,6 +16,7 @@ export class Listings extends Component {
     location: '',
     properties: [],
     loading: true,
+    message: '',
   };
 
   async componentDidMount() {
@@ -31,6 +32,7 @@ export class Listings extends Component {
   async _search() {
     this.setState({
       loading: true,
+      message: '',
     });
 
     const { location } = this.props;
@@ -40,7 +42,11 @@ export class Listings extends Component {
       this.setState({
         properties: results.data.response.listings,
         loading: false,
-        location: results.data.response.locations[0].title,
+      });
+    } else {
+      this.setState({
+        message: 'Please Try again',
+        loading: false,
       });
     }
   }

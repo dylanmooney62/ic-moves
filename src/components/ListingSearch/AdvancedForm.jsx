@@ -15,25 +15,25 @@ const AdvancedForm = ({ formData, active, onChange }) => {
     <StyledAdvancedForm active={active}>
       <StyledCustomSelect
         label="Max Bedrooms"
-        id="maxBedroom"
-        name="maxBedroom"
-        value={formData.maxBedroom}
+        id="bedroomMax"
+        name="bedroomMax"
+        value={formData.bedroomMax}
         onChange={handleChange}
         options={MAX_ROOM_OPTIONS}
       />
       <StyledCustomSelect
         label="Min Bathrooms"
-        id="minBathroom"
-        name="minBathroom"
-        value={formData.minBathroom}
+        id="bathroomMin"
+        name="bathroomMin"
+        value={formData.bathroomMin}
         onChange={handleChange}
         options={MIN_ROOM_OPTIONS}
       />
       <StyledCustomSelect
         label="Max Bathrooms"
-        id="maxBathroom"
-        name="maxBathroom"
-        value={formData.maxBathrrom}
+        id="bathroomMax"
+        name="bathroomMax"
+        value={formData.bathroomMax}
         onChange={handleChange}
         options={MAX_ROOM_OPTIONS}
       />

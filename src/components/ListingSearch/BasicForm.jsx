@@ -36,25 +36,25 @@ const MainForm = ({ formData, errors, onChange, onToggle }) => {
       />
       <StyledCustomSelect
         label="Min Price"
-        id="minPrice"
-        name="minPrice"
-        value={formData.minPrice}
+        id="priceMin"
+        name="priceMin"
+        value={formData.priceMin}
         onChange={handleChange}
         options={MIN_PRICE_OPTIONS}
       />
       <StyledCustomSelect
         label="Max Price"
-        id="maxPrice"
-        name="maxPrice"
-        value={formData.maxPrice}
+        id="priceMax"
+        name="priceMax"
+        value={formData.priceMax}
         onChange={handleChange}
         options={MAX_PRICE_OPTIONS}
       />
       <StyledCustomSelect
         label="Bedrooms"
-        id="minBedroom"
-        name="minBedroom"
-        value={formData.minBedroom}
+        id="bedroomMin"
+        name="bedroomMin"
+        value={formData.bedroomMin}
         onChange={handleChange}
         options={MIN_ROOM_OPTIONS}
       />

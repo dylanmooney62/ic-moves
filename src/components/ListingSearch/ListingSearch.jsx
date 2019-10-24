@@ -19,12 +19,12 @@ export class ListingSearch extends Component {
     formData: {
       listingType: 'buy',
       placeName: '',
-      minPrice: 0,
-      maxPrice: 0,
-      minBedroom: 0,
-      maxBedroom: 0,
-      minBathroom: 0,
-      maxBathroom: 0,
+      priceMin: 0,
+      priceMax: 0,
+      bedroomMin: 0,
+      bedroomMax: 0,
+      bathroomMin: 0,
+      bathroomMax: 0,
       keywords: '',
     },
     errors: {
@@ -84,6 +84,8 @@ export class ListingSearch extends Component {
           return `${camelToUnderscore(key)}=${formData[key]}`;
         })
         .join('&');
+
+      console.log(searchParams);
 
       history.push({
         pathname: '/search',

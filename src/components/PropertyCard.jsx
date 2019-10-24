@@ -25,7 +25,8 @@ const PropertyCard = ({
       </ImgContainer>
       <Divider>
         <Title>
-          {bedrooms} Bedroom {ucFirstLetter(type)}
+          {type !== 'land' && <span>{bedrooms || 1} Bedroom </span>}
+          {ucFirstLetter(type)}
         </Title>
         <Price>{price}</Price>
         <Box display="flex" alignItems="center">
@@ -121,6 +122,9 @@ const LocationText = styled.span`
   color: ${(props) => props.theme.palette.neutral['500']};
   margin-left: ${(props) => props.theme.spacing.sm};
   font-style: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const DetailText = styled.span`

@@ -51,7 +51,7 @@ const theme = {
     '2xl': '4.8rem',
     '3xl': '6.4rem',
     '4xl': '9.6rem',
-    '5xl': '12.rem',
+    '5xl': '12.4rem',
   },
   radius: {
     sm: '0.1rem',

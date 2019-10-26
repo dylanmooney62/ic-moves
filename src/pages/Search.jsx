@@ -13,6 +13,7 @@ import Header from '../components/Header/Header';
 import ListingSearch from '../components/ListingSearch/ListingSearch';
 import Container from '../components/shared/Container';
 import PropertyCardList from '../components/PropertyCardList';
+import Footer from '../components/Footer/Footer';
 
 export class Listings extends Component {
   state = {
@@ -118,6 +119,7 @@ export class Listings extends Component {
             </Box>
           </Container>
         </PropertiesSection>
+        <Footer />
       </>
     );
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Logo } from '../../assets/icons/logo-white.svg';
 import { Link } from 'react-router-dom';
+
+import Logo from '../shared/Logo';
 
 const Navigation = () => (
   <StyledNavigation>

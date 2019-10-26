@@ -20,6 +20,12 @@ const Box = styled.div`
 
   /* shadows */
   box-shadow: ${(props) => props.shadow && props.theme.shadow[1]};
+
+  /* margins */
+  margin-top: ${(props) => props.mt && props.theme.spacing[props.mt]};
+  margin-bottom: ${(props) => props.mb && props.theme.spacing[props.mb]};
+  margin-left: ${(props) => props.ml && props.theme.spacing[props.ml]};
+  margin-right: ${(props) => props.mr && props.theme.spacing[props.mr]};
 `;
 
 Box.propTypes = {

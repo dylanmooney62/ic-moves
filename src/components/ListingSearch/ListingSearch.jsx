@@ -159,7 +159,7 @@ export class ListingSearch extends Component {
               onChange={this.handleChange}
             />
           </Box>
-          <SearchButton onClick={this.handleSubmit}>
+          <SearchButton type="submit">
             Search <StyledSearch />
           </SearchButton>
         </FormContainer>

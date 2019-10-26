@@ -32,6 +32,10 @@ const StyledSection = styled.section`
   height: 33vw;
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 1150px) {
+    display: none;
+  }
 `;
 
 const ImgContainer = styled.figure`

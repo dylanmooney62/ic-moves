@@ -28,7 +28,7 @@ const PropertyCardList = ({ properties, limit }) => {
                   imageUrl={img_url}
                   type={property_type}
                   price={price_formatted}
-                  location={title}
+                  Propertylocation={title}
                   bedrooms={bedroom_number}
                   bathrooms={bathroom_number}
                 />

@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { ucFirstLetter } from '../utils/utils';
+import { withRouter } from 'react-router';
 
 import { ReactComponent as LocationIcon } from '../assets/icons/location.svg';
 import { ReactComponent as BedIcon } from '../assets/icons/bed.svg';
@@ -14,10 +15,17 @@ const PropertyCard = ({
   imageUrl,
   type,
   price,
-  location,
+  Propertylocation,
   bedrooms,
   bathrooms,
+  history,
 }) => {
+  const handleClick = () => {
+    history.push({
+      pathname: '/property-detail',
+    });
+  };
+
   return (
     <PropertyCardContainer>
       <ImgContainer>
@@ -31,7 +39,7 @@ const PropertyCard = ({
         <Price>{price}</Price>
         <Box display="flex" alignItems="center">
           <LocationIcon />
-          <LocationText>{location}</LocationText>
+          <LocationText>{Propertylocation}</LocationText>
         </Box>
       </Divider>
       <Divider alternate>
@@ -48,7 +56,7 @@ const PropertyCard = ({
           </DetailText>
         </Box>
       </Divider>
-      <PropertyButton>View Property</PropertyButton>
+      <PropertyButton onClick={handleClick}>View Property</PropertyButton>
     </PropertyCardContainer>
   );
 };
@@ -57,14 +65,14 @@ PropertyCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  Propertylocation: PropTypes.string.isRequired,
   bedrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
     .isRequired,
   bathrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
     .isRequired,
 };
 
-export default PropertyCard;
+export default withRouter(PropertyCard);
 
 const PropertyCardContainer = styled.div`
   width: 100%;

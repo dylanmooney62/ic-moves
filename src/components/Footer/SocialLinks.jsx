@@ -31,6 +31,10 @@ export default SocialLinks;
 const List = styled.ul`
   list-style: none;
   display: flex;
+
+  @media only screen and (max-width: 440px) {
+    margin-bottom: ${(props) => props.theme.spacing.xl};
+  }
 `;
 
 const ListItem = styled.li`

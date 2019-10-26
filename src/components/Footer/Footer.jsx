@@ -32,18 +32,22 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Container maxWidth="lg">
-        <Box display="flex" justifyContent="space-between" mb="3xl">
-          <Logo withText />
+        <FooterTop display="flex" justifyContent="space-between" mb="3xl">
+          <StyledLogo withText />
           <Box display="flex">
             <FooterLinks links={LINKS} />
           </Box>
-        </Box>
-        <Box display="flex" justifyContent="space-between">
+        </FooterTop>
+        <FooterBottom
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Copyright>
             <small>&copy; {new Date().getFullYear()} IC Moves</small>
           </Copyright>
           <SocialLinks />
-        </Box>
+        </FooterBottom>
       </Container>
     </StyledFooter>
   );
@@ -58,4 +62,25 @@ const StyledFooter = styled.footer`
 
 const Copyright = styled.p`
   font-size: ${(props) => props.theme.typography.size.base};
+`;
+
+const FooterTop = styled(Box)`
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: ${(props) => props.theme.spacing['2xl']};
+  }
+`;
+
+const FooterBottom = styled(Box)`
+  @media only screen and (max-width: 440px) {
+    flex-direction: column-reverse;
+  }
+`;
+
+const StyledLogo = styled(Logo)`
+  @media only screen and (max-width: 768px) {
+    margin-bottom: ${(props) => props.theme.spacing['2xl']};
+  }
 `;

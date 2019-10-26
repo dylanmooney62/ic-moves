@@ -48,7 +48,7 @@ const TextBox = styled.div.attrs((props) => ({
     props.height === 'sm' &&
     css`
       padding-top: 6rem;
-      padding-bottom: 10rem;
+      padding-bottom: 12rem;
     `}
 
   ${(props) =>

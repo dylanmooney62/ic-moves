@@ -68,7 +68,6 @@ const FooterTop = styled(Box)`
   @media only screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-
     margin-bottom: ${(props) => props.theme.spacing['2xl']};
   }
 `;

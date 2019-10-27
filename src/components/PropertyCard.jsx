@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
 import { ucFirstLetter } from '../utils/utils';
 import { withRouter } from 'react-router';
 
@@ -12,64 +11,59 @@ import CustomButton from './shared/CustomButton';
 import Box from './shared/Box';
 
 const PropertyCard = ({
-  imageUrl,
-  type,
-  price,
-  Propertylocation,
-  bedrooms,
-  bathrooms,
+  property,
+  property: {
+    img_url,
+    property_type,
+    price_formatted,
+    title,
+    bedroom_number,
+    bathroom_number,
+  },
   history,
 }) => {
   const handleClick = () => {
     history.push({
       pathname: '/property-detail',
+      state: property,
     });
   };
 
   return (
     <PropertyCardContainer>
       <ImgContainer>
-        <PropertyImg src={imageUrl} alt={type} />
+        <PropertyImg src={img_url} alt={property_type} />
       </ImgContainer>
       <Divider>
         <Title>
-          {type !== 'land' && <span>{bedrooms || 1} Bedroom </span>}
-          {ucFirstLetter(type)}
+          {property_type !== 'land' && (
+            <span>{bedroom_number || 1} Bedroom </span>
+          )}
+          {ucFirstLetter(property_type)}
         </Title>
-        <Price>{price}</Price>
+        <Price>{price_formatted}</Price>
         <Box display="flex" alignItems="center">
           <LocationIcon />
-          <LocationText>{Propertylocation}</LocationText>
+          <LocationText>{title}</LocationText>
         </Box>
       </Divider>
       <Divider alternate>
         <Box display="flex" alignItems="center">
           <StyledBedIcon />
           <DetailText>
-            <Bold>{bedrooms || 1}</Bold> Bedroom
+            <Bold>{bedroom_number || 1}</Bold> Bedroom
           </DetailText>
         </Box>
         <Box display="flex" alignItems="center">
           <StyledBathIcon />
           <DetailText>
-            <Bold>{bathrooms || 1}</Bold> Bathroom
+            <Bold>{bathroom_number || 1}</Bold> Bathroom
           </DetailText>
         </Box>
       </Divider>
       <PropertyButton onClick={handleClick}>View Property</PropertyButton>
     </PropertyCardContainer>
   );
-};
-
-PropertyCard.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  Propertylocation: PropTypes.string.isRequired,
-  bedrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-    .isRequired,
-  bathrooms: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-    .isRequired,
 };
 
 export default withRouter(PropertyCard);

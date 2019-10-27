@@ -11,30 +11,11 @@ const PropertyCardList = ({ properties, limit }) => {
       <StyledPropertyCardList>
         {properties
           .filter((i, idx) => idx < limit)
-          .map(
-            (
-              {
-                img_url,
-                property_type,
-                price_formatted,
-                title,
-                bedroom_number,
-                bathroom_number,
-              },
-              idx,
-            ) => (
-              <ListItem key={idx}>
-                <PropertyCard
-                  imageUrl={img_url}
-                  type={property_type}
-                  price={price_formatted}
-                  Propertylocation={title}
-                  bedrooms={bedroom_number}
-                  bathrooms={bathroom_number}
-                />
-              </ListItem>
-            ),
-          )}
+          .map((property, idx) => (
+            <ListItem key={idx}>
+              <PropertyCard property={property} />
+            </ListItem>
+          ))}
       </StyledPropertyCardList>
     </Container>
   );

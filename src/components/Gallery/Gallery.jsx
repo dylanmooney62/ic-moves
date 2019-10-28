@@ -58,10 +58,10 @@ const StyledSlider = styled(Slider)`
 `;
 
 const Image = styled.img`
-  object-position: top;
+  position: relative;
+  object-position: center;
   object-fit: cover;
   display: block;
   width: 60rem;
   height: 40rem;
-  border-radius: ${(props) => props.theme.radius.sm};
 `;

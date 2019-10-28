@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyle from './theme/GlobalStyle';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -14,6 +14,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/property-detail" component={PropertyDetail} />
+        <Redirect from="*" to="/" />
       </Switch>
     </>
   );

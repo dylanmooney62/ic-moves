@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Panel from './shared/Panel';
-import Tab from './shared/Tab';
-import Box from './shared/Box';
+import Panel from '../shared/Panel';
+import Tab from '../shared/Tab';
+import Box from '../shared/Box';
 
 export class PropertyPanel extends Component {
   state = {

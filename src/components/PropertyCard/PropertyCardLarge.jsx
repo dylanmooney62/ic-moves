@@ -6,7 +6,6 @@ import Rooms from './Rooms';
 import CustomButton from '../shared/CustomButton';
 
 const PropertyCardLarge = ({
-  property,
   property: {
     property_type,
     price_formatted,
@@ -14,12 +13,9 @@ const PropertyCardLarge = ({
     bedroom_number,
     bathroom_number,
     car_spaces,
+    lister_url,
   },
 }) => {
-  const handleClick = () => {
-    console.log(property);
-  };
-
   return (
     <PropertyCardContainer>
       <Details
@@ -34,7 +30,9 @@ const PropertyCardLarge = ({
         bathrooms={bathroom_number}
         garages={car_spaces || '0'}
       />
-      <PropertyButton onClick={handleClick}>Contact Realtor</PropertyButton>
+      <PropertyButton as="a" href={lister_url} target="_blank">
+        Contact Realtor
+      </PropertyButton>
     </PropertyCardContainer>
   );
 };
@@ -50,6 +48,8 @@ const PropertyCardContainer = styled.div`
 `;
 
 const PropertyButton = styled(CustomButton)`
+  display: block;
+  text-align: center;
   width: 100%;
   padding-top: ${(props) => props.theme.spacing.md};
   padding-bottom: ${(props) => props.theme.spacing.md};

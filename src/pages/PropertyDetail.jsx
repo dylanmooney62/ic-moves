@@ -6,13 +6,14 @@ import Container from '../components/shared/Container';
 import styled from 'styled-components';
 
 import Box from '../components/shared/Box';
-import PropertyPanel from '../components/PropertyPanel';
+import PropertyPanel from '../components/PropertyPanel/PropertyPanel';
 import PropertyCardLarge from '../components/PropertyCard/PropertyCardLarge';
 
 export class PropertyDetail extends Component {
   render() {
     const property = this.props.history.location.state;
     const { img_url } = property;
+    console.log(property);
 
     return (
       <>

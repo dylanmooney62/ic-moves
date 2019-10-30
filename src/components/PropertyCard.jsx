@@ -44,7 +44,12 @@ const PropertyCard = ({
         <Price>{price_formatted}</Price>
         <Box display="flex" alignItems="center">
           <LocationIcon />
-          <LocationText>{title}</LocationText>
+          <LocationText>
+            {title
+              .split(',')
+              .slice(0, 1)
+              .join('')}
+          </LocationText>
         </Box>
       </Divider>
       <Divider alternate>

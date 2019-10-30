@@ -6,6 +6,7 @@ import Container from '../components/shared/Container';
 import styled from 'styled-components';
 
 import Box from '../components/shared/Box';
+import PropertyCardLarge from '../components/PropertyCard/PropertyCardLarge';
 
 export class PropertyDetail extends Component {
   render() {
@@ -18,12 +19,16 @@ export class PropertyDetail extends Component {
         <BackBanner />
         <Container maxWidth="lg">
           <Details as="article">
-            <Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-start"
+            >
               <Box mb="xl">
                 <Gallery imgUrl={img_url} />
               </Box>
+              <PropertyCardLarge property={property} />
             </Box>
-            <Box></Box>
           </Details>
         </Container>
       </>

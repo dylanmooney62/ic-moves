@@ -5,7 +5,7 @@ import { ucFirstLetter } from '../../utils/utils';
 import Box from '../shared/Box';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location.svg';
 
-const PropertyCardDetails = ({ title, bedrooms, price, location }) => {
+const Details = ({ title, bedrooms, price, location }) => {
   return (
     <Box p="sm">
       <Title>
@@ -14,7 +14,7 @@ const PropertyCardDetails = ({ title, bedrooms, price, location }) => {
       </Title>
       <Price>{price}</Price>
       <Box display="flex" alignItems="center">
-        <LocationIcon />
+        <StyledLocationIcon />
         <LocationText>
           {location
             .split(',')
@@ -26,7 +26,7 @@ const PropertyCardDetails = ({ title, bedrooms, price, location }) => {
   );
 };
 
-export default PropertyCardDetails;
+export default Details;
 
 const Title = styled.h2`
   color: ${(props) => props.theme.palette.neutral['500']};
@@ -49,3 +49,5 @@ const LocationText = styled.span`
   color: ${(props) => props.theme.palette.neutral['500']};
   margin-left: ${(props) => props.theme.spacing.sm};
 `;
+
+const StyledLocationIcon = styled(LocationIcon)``;

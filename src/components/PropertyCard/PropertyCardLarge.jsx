@@ -1,71 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
 
 import Details from './Details';
 import Rooms from './Rooms';
 import CustomButton from '../shared/CustomButton';
 
-const PropertyCard = ({
+const PropertyCardLarge = ({
   property,
   property: {
-    img_url,
     property_type,
     price_formatted,
     title,
     bedroom_number,
     bathroom_number,
+    car_spaces,
   },
-  history,
 }) => {
-  // todo: api sends title as location for some reason try fix this
-
   const handleClick = () => {
-    history.push({
-      pathname: '/property-detail',
-      state: property,
-    });
+    console.log(property);
   };
 
   return (
     <PropertyCardContainer>
-      <ImgContainer>
-        <PropertyImg src={img_url} alt={property_type} />
-      </ImgContainer>
       <Details
         title={property_type}
         bedrooms={bedroom_number}
         price={price_formatted}
         location={title}
+        lg
       />
-      <Rooms bedrooms={bedroom_number} bathrooms={bathroom_number} />
-      <PropertyButton onClick={handleClick}>View Property</PropertyButton>
+      <Rooms
+        bedrooms={bedroom_number}
+        bathrooms={bathroom_number}
+        garages={car_spaces || '0'}
+      />
+      <PropertyButton onClick={handleClick}>Contact Realtor</PropertyButton>
     </PropertyCardContainer>
   );
 };
 
-export default withRouter(PropertyCard);
+export default PropertyCardLarge;
 
 const PropertyCardContainer = styled.div`
   width: 100%;
-  max-width: 31rem;
+  max-width: 40rem;
   border-radius: ${(props) => props.theme.radius.md};
   box-shadow: ${(props) => props.theme.shadow['1']};
   overflow: hidden;
-`;
-
-const ImgContainer = styled.figure`
-  width: 100%;
-  height: 20rem;
-  overflow: hidden;
-  margin-bottom: ${(props) => props.theme.spacing.xs};
-`;
-
-const PropertyImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 `;
 
 const PropertyButton = styled(CustomButton)`

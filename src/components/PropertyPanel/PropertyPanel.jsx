@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { ReactComponent as HouseIcon } from '../../assets/icons/house-outline.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location-icon-large.svg';
+
 import Panel from '../shared/Panel';
 import Tab from '../shared/Tab';
 import Box from '../shared/Box';
@@ -23,13 +26,14 @@ export class PropertyPanel extends Component {
 
     return (
       <StyledPropertyPanel>
-        <Box>
+        <Box display="flex">
           <LargeTab
             active={show === 'detail'}
             name="show"
             value="detail"
             onClick={this.handleClick}
           >
+            <StyledHouseIcon />
             Property Details
           </LargeTab>
           <LargeTab
@@ -38,6 +42,7 @@ export class PropertyPanel extends Component {
             value="map"
             onClick={this.handleClick}
           >
+            <StyledLocationIcon />
             Map & Nearby
           </LargeTab>
         </Box>
@@ -55,7 +60,20 @@ const StyledPropertyPanel = styled(Panel)`
 `;
 
 const LargeTab = styled(Tab)`
-  width: 50%;
+  flex: 1;
   padding-top: ${(props) => props.theme.spacing.lg};
   padding-bottom: ${(props) => props.theme.spacing.lg};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledHouseIcon = styled(HouseIcon)`
+  fill: ${(props) => props.theme.palette.primary['500']};
+  margin-right: ${(props) => props.theme.spacing.sm};
+`;
+
+const StyledLocationIcon = styled(LocationIcon)`
+  fill: ${(props) => props.theme.palette.primary['500']};
+  margin-right: ${(props) => props.theme.spacing.sm};
 `;

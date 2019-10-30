@@ -22,11 +22,17 @@ const TabButton = styled.button`
   }
 
   ${(props) =>
-    props.active &&
-    css`
-      background-color: #ffffff;
-      border-top: 0.3rem solid ${(props) => props.theme.palette.primary['500']};
-    `}
+    props.active
+      ? css`
+          background-color: #ffffff;
+          border-top: 0.3rem solid
+            ${(props) => props.theme.palette.primary['500']};
+        `
+      : css`
+          :hover {
+            filter: brightness(99%);
+          }
+        `}
 `;
 
 TabButton.propTypes = {

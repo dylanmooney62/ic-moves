@@ -1,5 +1,5 @@
 import React from 'react';
-import PropertyCard from './PropertyCard';
+import PropertyCard from './PropertyCard/PropertyCard';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 

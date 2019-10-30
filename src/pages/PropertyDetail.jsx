@@ -19,7 +19,9 @@ export class PropertyDetail extends Component {
         <Container maxWidth="lg">
           <Details as="article">
             <Box>
-              <Gallery imgUrl={img_url} />
+              <Box mb="xl">
+                <Gallery imgUrl={img_url} />
+              </Box>
             </Box>
             <Box></Box>
           </Details>

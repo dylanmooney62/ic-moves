@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Box = styled.div`
   width: ${(props) => props.width && props.width};
@@ -22,25 +21,18 @@ const Box = styled.div`
   box-shadow: ${(props) => props.shadow && props.theme.shadow[1]};
 
   /* margins */
+  margin: ${(props) => props.m && props.theme.spacing[props.m]};
   margin-top: ${(props) => props.mt && props.theme.spacing[props.mt]};
   margin-bottom: ${(props) => props.mb && props.theme.spacing[props.mb]};
   margin-left: ${(props) => props.ml && props.theme.spacing[props.ml]};
   margin-right: ${(props) => props.mr && props.theme.spacing[props.mr]};
-`;
 
-Box.propTypes = {
-  width: PropTypes.string,
-  display: PropTypes.string,
-  flexDirection: PropTypes.string,
-  flexWrap: PropTypes.string,
-  justifyContent: PropTypes.string,
-  alignItems: PropTypes.string,
-  alignContent: PropTypes.string,
-  order: PropTypes.number,
-  flexGrow: PropTypes.number,
-  flexShrink: PropTypes.number,
-  alignSelf: PropTypes.string,
-  boxShadow: PropTypes.number,
-};
+  /* padding */
+  padding: ${(props) => props.p && props.theme.spacing[props.p]};
+  padding-top: ${(props) => props.pt && props.theme.spacing[props.pt]};
+  padding-bottom: ${(props) => props.pb && props.theme.spacing[props.pb]};
+  padding-left: ${(props) => props.pl && props.theme.spacing[props.pl]};
+  padding-right: ${(props) => props.pr && props.theme.spacing[props.pr]};
+`;
 
 export default Box;

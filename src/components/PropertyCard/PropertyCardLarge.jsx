@@ -27,7 +27,6 @@ const PropertyCardLarge = ({
         bedrooms={bedroom_number}
         price={price_formatted}
         location={title}
-        lg
       />
       <Rooms
         bedrooms={bedroom_number}

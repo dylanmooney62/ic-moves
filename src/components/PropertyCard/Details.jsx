@@ -14,7 +14,7 @@ const Details = ({ title, bedrooms, price, location }) => {
       </Title>
       <Price>{price}</Price>
       <Box display="flex" alignItems="center">
-        <StyledLocationIcon />
+        <LocationIcon />
         <LocationText>
           {location
             .split(',')
@@ -49,5 +49,3 @@ const LocationText = styled.span`
   color: ${(props) => props.theme.palette.neutral['500']};
   margin-left: ${(props) => props.theme.spacing.sm};
 `;
-
-const StyledLocationIcon = styled(LocationIcon)``;

@@ -17,7 +17,7 @@ export class PropertyDetail extends Component {
       <>
         <Header title="Property Detail" height="sm" textAlign="center" />
         <BackBanner />
-        <Container maxWidth="lg">
+        <Container maxWidth="sm">
           <Details as="article">
             <Box
               display="flex"

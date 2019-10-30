@@ -48,12 +48,14 @@ export default Gallery;
 
 const StyledGallery = styled.div`
   position: relative;
-  width: 60rem;
+  width: 100%;
+  max-width: 60rem;
   height: 40rem;
 `;
 
 const StyledSlider = styled(Slider)`
-  width: 60rem;
+  width: 100%;
+  max-width: 60rem;
   height: 40rem;
 `;
 
@@ -62,6 +64,7 @@ const Image = styled.img`
   object-position: center;
   object-fit: cover;
   display: block;
-  width: 60rem;
+  width: 100%;
+  max-width: 60rem;
   height: 40rem;
 `;

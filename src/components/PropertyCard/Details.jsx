@@ -1,21 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ucFirstLetter } from '../../utils/utils';
 
 import Box from '../shared/Box';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location.svg';
 
-const Details = ({ title, bedrooms, price, location }) => {
+const Details = ({ title, bedrooms, price, location, lg }) => {
   return (
-    <Box p="sm">
-      <Title>
+    <Box p={lg ? 'md' : 'sm'}>
+      <Title lg={lg}>
         {title !== 'land' && <span>{bedrooms || 1} Bedroom </span>}
         {ucFirstLetter(title)}
       </Title>
-      <Price>{price}</Price>
+      <Price lg={lg}>{price}</Price>
       <Box display="flex" alignItems="center">
         <LocationIcon />
-        <LocationText>
+        <LocationText lg={lg}>
           {location
             .split(',')
             .slice(0, 1)
@@ -33,6 +33,12 @@ const Title = styled.h2`
   font-size: ${(props) => props.theme.typography.size.xl};
   font-weight: ${(props) => props.theme.typography.weight.base};
   margin-bottom: ${(props) => props.theme.spacing['2xs']};
+
+  ${(props) =>
+    props.lg &&
+    css`
+      font-size: ${(props) => props.theme.typography.size['2xl']};
+    `}
 `;
 
 const Price = styled.div`
@@ -41,6 +47,12 @@ const Price = styled.div`
   color: ${(props) => props.theme.palette.neutral['600']};
   margin-bottom: ${(props) => props.theme.spacing.xs};
   letter-spacing: 0.1rem;
+
+  ${(props) =>
+    props.lg &&
+    css`
+      font-size: ${(props) => props.theme.typography.size['4xl']};
+    `}
 `;
 
 const LocationText = styled.span`
@@ -48,4 +60,10 @@ const LocationText = styled.span`
   font-weight: ${(props) => props.theme.typography.weight.base};
   color: ${(props) => props.theme.palette.neutral['500']};
   margin-left: ${(props) => props.theme.spacing.sm};
+
+  ${(props) =>
+    props.lg &&
+    css`
+      font-size: ${(props) => props.theme.typography.size.base};
+    `}
 `;

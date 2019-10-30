@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const TabButton = styled.button`
+  font-family: inherit;
   color: ${(props) => props.theme.palette.neutral['600']};
   font-size: ${(props) => props.theme.typography.size.sm};
   padding-top: ${(props) => props.theme.spacing.sm};

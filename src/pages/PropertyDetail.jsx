@@ -13,7 +13,6 @@ export class PropertyDetail extends Component {
   render() {
     const property = this.props.history.location.state;
     const { img_url } = property;
-    console.log(property);
 
     return (
       <>
@@ -26,12 +25,12 @@ export class PropertyDetail extends Component {
               justifyContent="space-between"
               alignItems="flex-start"
             >
-              <Box mb="3xl">
+              <Box mb="2xl">
                 <Gallery imgUrl={img_url} />
               </Box>
               <PropertyCardLarge property={property} />
             </Box>
-            <PropertyPanel />
+            <PropertyPanel property={property} />
           </Details>
         </Container>
       </>

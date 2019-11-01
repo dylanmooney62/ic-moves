@@ -7,10 +7,11 @@ import { ReactComponent as LocationIcon } from '../../assets/icons/location-icon
 import Panel from '../shared/Panel';
 import Tab from '../shared/Tab';
 import Box from '../shared/Box';
+import PropertyMap from './PropertyMap';
 
 export class PropertyPanel extends Component {
   state = {
-    show: 'detail',
+    show: 'map',
   };
 
   handleClick = (e) => {
@@ -23,6 +24,7 @@ export class PropertyPanel extends Component {
 
   render() {
     const { show } = this.state;
+    const { longitude, latitude } = this.props.property;
 
     return (
       <StyledPropertyPanel>
@@ -46,7 +48,13 @@ export class PropertyPanel extends Component {
             Map & Nearby
           </LargeTab>
         </Box>
-        <Box p="md"></Box>
+        <Box p="md">
+          {show === 'detail' ? (
+            <span>details</span>
+          ) : (
+            <PropertyMap lat={latitude} lng={longitude} />
+          )}
+        </Box>
       </StyledPropertyPanel>
     );
   }

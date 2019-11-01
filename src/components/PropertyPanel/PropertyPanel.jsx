@@ -7,11 +7,13 @@ import { ReactComponent as LocationIcon } from '../../assets/icons/location-icon
 import Panel from '../shared/Panel';
 import Tab from '../shared/Tab';
 import Box from '../shared/Box';
-import PropertyMap from './PropertyMap';
+import Map from '../Map';
+import Features from './Features';
+import BroadBand from './BroadBand';
 
 export class PropertyPanel extends Component {
   state = {
-    show: 'map',
+    show: 'details',
   };
 
   handleClick = (e) => {
@@ -24,15 +26,20 @@ export class PropertyPanel extends Component {
 
   render() {
     const { show } = this.state;
-    const { longitude, latitude } = this.props.property;
+    const { longitude, latitude, keywords } = this.props.property;
+
+    // removes white space the ends up on some features
+    const features = keywords.split(',').map((feature) => feature.trim());
+
+    console.log(features);
 
     return (
       <StyledPropertyPanel>
-        <Box display="flex">
+        <Box display="flex" mb="sm">
           <LargeTab
-            active={show === 'detail'}
+            active={show === 'details'}
             name="show"
-            value="detail"
+            value="details"
             onClick={this.handleClick}
           >
             <StyledHouseIcon />
@@ -48,11 +55,20 @@ export class PropertyPanel extends Component {
             Map & Nearby
           </LargeTab>
         </Box>
-        <Box p="md">
-          {show === 'detail' ? (
-            <span>details</span>
+        <Box p="lg">
+          {show === 'details' ? (
+            <>
+              <Box mb="3xl">
+                <Title>Features</Title>
+                <Features features={features} />
+              </Box>
+              <Box mb="md">
+                <Title>Broadband</Title>
+                <BroadBand lat={latitude} lng={longitude} />
+              </Box>
+            </>
           ) : (
-            <PropertyMap lat={latitude} lng={longitude} />
+            <Map lat={latitude} lng={longitude} />
           )}
         </Box>
       </StyledPropertyPanel>
@@ -84,4 +100,11 @@ const StyledHouseIcon = styled(HouseIcon)`
 const StyledLocationIcon = styled(LocationIcon)`
   fill: ${(props) => props.theme.palette.primary['500']};
   margin-right: ${(props) => props.theme.spacing.sm};
+`;
+
+const Title = styled.h3`
+  font-size: ${(props) => props.theme.typography.size['2xl']};
+  color: ${(props) => props.theme.palette.neutral['500']};
+  font-weight: ${(props) => props.theme.typography.weight.base};
+  margin-bottom: ${(props) => props.theme.spacing.xl};
 `;

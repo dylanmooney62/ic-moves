@@ -12,14 +12,13 @@ const PropertyCard = ({
     img_url,
     property_type,
     price_formatted,
-    title,
+    title: location,
     bedroom_number,
     bathroom_number,
+    price_type,
   },
   history,
 }) => {
-  // todo: api sends title as location for some reason try fix this
-
   const handleClick = () => {
     history.push({
       pathname: '/property-detail',
@@ -36,7 +35,8 @@ const PropertyCard = ({
         title={property_type}
         bedrooms={bedroom_number}
         price={price_formatted}
-        location={title}
+        location={location}
+        priceType={price_type}
       />
       <Rooms bedrooms={bedroom_number} bathrooms={bathroom_number} />
       <PropertyButton onClick={handleClick}>View Property</PropertyButton>

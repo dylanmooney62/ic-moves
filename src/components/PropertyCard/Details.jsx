@@ -5,14 +5,29 @@ import { ucFirstLetter } from '../../utils/utils';
 import Box from '../shared/Box';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location.svg';
 
-const Details = ({ title, bedrooms, price, location, lg }) => {
+const Details = ({ title, bedrooms, price, location, priceType, lg }) => {
+  const getSchedule = () => {
+    switch (priceType) {
+      case 'weekly':
+        return 'per week';
+      case 'monthly':
+        return 'per month';
+      default:
+        break;
+    }
+  };
+
+  const pricing = getSchedule();
+
   return (
     <Box p={lg ? 'md' : 'sm'}>
       <Title lg={lg}>
         {title !== 'land' && <span>{bedrooms || 1} Bedroom </span>}
         {ucFirstLetter(title)}
       </Title>
-      <Price lg={lg}>{price}</Price>
+      <Price lg={lg}>
+        {price} {pricing && <span>{pricing}</span>}
+      </Price>
       <Box display="flex" alignItems="center">
         <LocationIcon />
         <LocationText lg={lg}>
@@ -47,6 +62,13 @@ const Price = styled.div`
   color: ${(props) => props.theme.palette.neutral['600']};
   margin-bottom: ${(props) => props.theme.spacing.xs};
   letter-spacing: 0.1rem;
+
+  span {
+    font-size: ${(props) => props.theme.typography.size['sm']};
+    font-weight: ${(props) => props.theme.typography.weight.base};
+    color: ${(props) => props.theme.palette.neutral['500']};
+    letter-spacing: 0rem;
+  }
 
   ${(props) =>
     props.lg &&

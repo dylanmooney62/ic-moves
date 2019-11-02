@@ -14,6 +14,7 @@ const PropertyCardLarge = ({
     bathroom_number,
     car_spaces,
     lister_url,
+    price_type,
   },
 }) => {
   return (
@@ -23,7 +24,8 @@ const PropertyCardLarge = ({
         bedrooms={bedroom_number}
         price={price_formatted}
         location={title}
-        lg={true}
+        priceType={price_type}
+        lg
       />
       <Rooms
         bedrooms={bedroom_number}

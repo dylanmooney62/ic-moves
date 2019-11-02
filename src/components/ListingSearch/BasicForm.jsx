@@ -9,6 +9,8 @@ import { ReactComponent as Chevron } from '../../assets/icons/chevron-down.svg';
 import {
   MIN_PRICE_OPTIONS,
   MAX_PRICE_OPTIONS,
+  MAX_PRICE_OPTIONS_MONTHLY,
+  MIN_PRICE_OPTIONS_MONTHLY,
   MIN_ROOM_OPTIONS,
 } from './options';
 
@@ -40,7 +42,11 @@ const MainForm = ({ formData, errors, onChange, onToggle }) => {
         name="priceMin"
         value={formData.priceMin}
         onChange={handleChange}
-        options={MIN_PRICE_OPTIONS}
+        options={
+          formData.listingType === 'buy'
+            ? MIN_PRICE_OPTIONS
+            : MIN_PRICE_OPTIONS_MONTHLY
+        }
       />
       <StyledCustomSelect
         label="Max Price"
@@ -48,7 +54,11 @@ const MainForm = ({ formData, errors, onChange, onToggle }) => {
         name="priceMax"
         value={formData.priceMax}
         onChange={handleChange}
-        options={MAX_PRICE_OPTIONS}
+        options={
+          formData.listingType === 'buy'
+            ? MAX_PRICE_OPTIONS
+            : MAX_PRICE_OPTIONS_MONTHLY
+        }
       />
       <StyledCustomSelect
         label="Bedrooms"

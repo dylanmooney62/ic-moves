@@ -56,7 +56,7 @@ export class PropertyPanel extends Component {
         <Box p="lg">
           {show === 'details' ? (
             <>
-              <Box mb="3xl">
+              <Box mb="2xl">
                 <Title>Features</Title>
                 <Features features={features} />
               </Box>

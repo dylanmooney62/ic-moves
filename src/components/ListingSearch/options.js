@@ -29,6 +29,37 @@ export const MAX_PRICE_OPTIONS = [
   { option: '£10,000,000', value: 10000000 },
 ];
 
+export const MAX_PRICE_OPTIONS_MONTHLY = [
+  { option: 'No Max', value: 0 },
+  { option: '£100 pcm', value: 100 },
+  { option: '£200 pcm', value: 200 },
+  { option: '£300 pcm', value: 300 },
+  { option: '£400 pcm', value: 400 },
+  { option: '£500 pcm', value: 500 },
+  { option: '£600 pcm', value: 600 },
+  { option: '£700 pcm', value: 700 },
+  { option: '£800 pcm', value: 800 },
+  { option: '£900 pcm', value: 900 },
+  { option: '£1000 pcm', value: 1000 },
+  { option: '£1250 pcm', value: 1250 },
+  { option: '£1500 pcm', value: 1500 },
+  { option: '£1750 pcm', value: 1750 },
+  { option: '£2000 pcm', value: 2000 },
+  { option: '£2250 pcm', value: 2250 },
+  { option: '£2500 pcm', value: 2500 },
+  { option: '£2750 pcm', value: 2750 },
+  { option: '£3000 pcm', value: 3000 },
+  { option: '£4000 pcm', value: 4000 },
+  { option: '£5000 pcm', value: 5000 },
+  { option: '£7500 pcm', value: 7500 },
+  { option: '£10,000 pcm', value: 10000 },
+  { option: '£12,500 pcm', value: 12500 },
+  { option: '£15,000 pcm', value: 15000 },
+  { option: '£17,500 pcm', value: 17500 },
+  { option: '£20,000 pcm', value: 20000 },
+  { option: '£25,000 pcm', value: 25000 },
+];
+
 export const MIN_PRICE_OPTIONS = [
   { option: 'No Min', value: 0 },
   { option: '£50,000', value: 50000 },
@@ -60,8 +91,39 @@ export const MIN_PRICE_OPTIONS = [
   { option: '£10,000,000', value: 10000000 },
 ];
 
-export const MAX_ROOM_OPTIONS = [
+export const MIN_PRICE_OPTIONS_MONTHLY = [
   { option: 'No Min', value: 0 },
+  { option: '£100 pcm', value: 100 },
+  { option: '£200 pcm', value: 200 },
+  { option: '£300 pcm', value: 300 },
+  { option: '£400 pcm', value: 400 },
+  { option: '£500 pcm', value: 500 },
+  { option: '£600 pcm', value: 600 },
+  { option: '£700 pcm', value: 700 },
+  { option: '£800 pcm', value: 800 },
+  { option: '£900 pcm', value: 900 },
+  { option: '£1000 pcm', value: 1000 },
+  { option: '£1250 pcm', value: 1250 },
+  { option: '£1500 pcm', value: 1500 },
+  { option: '£1750 pcm', value: 1750 },
+  { option: '£2000 pcm', value: 2000 },
+  { option: '£2250 pcm', value: 2250 },
+  { option: '£2500 pcm', value: 2500 },
+  { option: '£2750 pcm', value: 2750 },
+  { option: '£3000 pcm', value: 3000 },
+  { option: '£4000 pcm', value: 4000 },
+  { option: '£5000 pcm', value: 5000 },
+  { option: '£7500 pcm', value: 7500 },
+  { option: '£10,000 pcm', value: 10000 },
+  { option: '£12,500 pcm', value: 12500 },
+  { option: '£15,000 pcm', value: 15000 },
+  { option: '£17,500 pcm', value: 17500 },
+  { option: '£20,000 pcm', value: 20000 },
+  { option: '£25,000 pcm', value: 25000 },
+];
+
+export const MAX_ROOM_OPTIONS = [
+  { option: 'No Max', value: 0 },
   { option: '1+', value: 1 },
   { option: '2+', value: 2 },
   { option: '3+', value: 3 },

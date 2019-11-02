@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 
 const PropertyMap = ({ lat, lng }) => {
   const position = [lat, lng];

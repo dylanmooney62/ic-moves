@@ -28,10 +28,8 @@ export class PropertyPanel extends Component {
     const { show } = this.state;
     const { longitude, latitude, keywords } = this.props.property;
 
-    // removes white space the ends up on some features
+    // removes white space that ends up on some features
     const features = keywords.split(',').map((feature) => feature.trim());
-
-    console.log(features);
 
     return (
       <StyledPropertyPanel>

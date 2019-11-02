@@ -6,13 +6,7 @@ import { ReactComponent as WifiIcon } from '../../assets/icons/wifi.svg';
 import Box from '../shared/Box';
 
 export class BroadBand extends Component {
-  componentDidMount() {
-    console.log('Your broadband speed is');
-  }
-
   render() {
-    const { lat, lng } = this.props;
-
     return (
       <Box display="flex" alignItems="center">
         <StyledWifiIcon />

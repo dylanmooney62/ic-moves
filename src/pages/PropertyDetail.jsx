@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import BackBanner from '../components/BackBanner';
 import Gallery from '../components/Gallery/Gallery';
 import Container from '../components/shared/Container';
@@ -38,6 +39,7 @@ export class PropertyDetail extends Component {
             <MortgageCalculator />
           </Section>
         </Container>
+        <Footer />
       </>
     );
   }

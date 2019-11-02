@@ -41,8 +41,19 @@ export class Listings extends Component {
     });
 
     const { location } = this.props;
-    const { placeName } = camelcaseKeys(qs.parse(location.search));
-    const results = await propertySearch.get(location.search);
+
+    // returns query string as object, removes prepended q
+    const queryObject = qs.parse(location.search);
+
+    // converts place_name to placeName
+    const { placeName } = camelcaseKeys(queryObject);
+
+    // converts query object to string
+    const queryString = qs.stringify(queryObject);
+
+    const results = await propertySearch.get(
+      `api?encoding=json&pretty=1&action=search_listings&country=uk&${queryString}`,
+    );
 
     if (results.status === 200) {
       const statusCode = parseInt(

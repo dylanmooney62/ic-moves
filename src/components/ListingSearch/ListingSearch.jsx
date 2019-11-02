@@ -87,11 +87,9 @@ export class ListingSearch extends Component {
         })
         .join('&');
 
-      console.log(searchParams);
-
       history.push({
         pathname: '/search',
-        search: `?${searchParams}`,
+        search: `${searchParams}`,
       });
     } else {
       this._toggleError('placeName', 'Please enter a location');

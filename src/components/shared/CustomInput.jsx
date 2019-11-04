@@ -2,8 +2,15 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CustomInput = ({ label, id, className, error, ...otherProps }) => (
-  <InputContainer className={className}>
+const CustomInput = ({
+  label,
+  id,
+  className,
+  error,
+  display,
+  ...otherProps
+}) => (
+  <InputContainer className={className} display={display}>
     {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
     <StyledInput id={id} {...otherProps} error={error} />
   </InputContainer>
@@ -11,7 +18,7 @@ const CustomInput = ({ label, id, className, error, ...otherProps }) => (
 
 CustomInput.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default CustomInput;
@@ -20,6 +27,13 @@ const InputContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   width: 24rem;
+
+  ${(props) =>
+    props.display === 'block' &&
+    css`
+      display: block;
+      width: 100%;
+    `}
 `;
 
 const StyledLabel = styled.label`

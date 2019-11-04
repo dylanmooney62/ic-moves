@@ -14,7 +14,7 @@ import MortgageCalculator from '../components/MortgageCalculator';
 export class PropertyDetail extends Component {
   render() {
     const property = this.props.history.location.state;
-    const { img_url } = property;
+    const { img_url, listing_type, price_high } = property;
 
     return (
       <>
@@ -34,10 +34,12 @@ export class PropertyDetail extends Component {
             </Box>
             <PropertyPanel property={property} />
           </Details>
-          <Section>
-            <Title>Mortgage Calculator</Title>
-            <MortgageCalculator />
-          </Section>
+          {listing_type === 'buy' && (
+            <Section>
+              <Title>Mortgage Calculator</Title>
+              <MortgageCalculator defaultAmount={price_high} />
+            </Section>
+          )}
         </Container>
         <Footer />
       </>

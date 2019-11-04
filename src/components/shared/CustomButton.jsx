@@ -15,9 +15,17 @@ const CustomButton = styled.button`
   cursor: pointer;
   text-decoration: none;
 
+
   &:focus {
     outline: none;
   }
+
+  ${(props) =>
+    props.display &&
+    css`
+      display: block;
+      width: 100%;
+    `}
 
   ${(props) =>
     props.color === 'primary' &&

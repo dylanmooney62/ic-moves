@@ -33,6 +33,17 @@ const TabButton = styled.button`
             filter: brightness(99%);
           }
         `}
+
+  ${(props) =>
+    props.variant === 'lg' &&
+    css`
+      flex: 1;
+      padding-top: ${(props) => props.theme.spacing.lg};
+      padding-bottom: ${(props) => props.theme.spacing.lg};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `}
 `;
 
 TabButton.propTypes = {

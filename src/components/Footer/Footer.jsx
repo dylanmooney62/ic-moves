@@ -12,18 +12,18 @@ const LINKS = [
     id: 0,
     title: 'Discover',
     links: [
-      { text: 'Buy', href: '#' },
-      { text: 'Rent', href: '#' },
-      { text: 'Calculator', href: '#' },
+      { text: 'Buy', href: '/' },
+      { text: 'Rent', href: '/' },
+      { text: 'Calculator', href: '/' },
     ],
   },
   {
     id: 1,
     title: 'About',
     links: [
-      { text: 'Team', href: '#' },
-      { text: 'Careers', href: '#' },
-      { text: 'Contact', href: '#' },
+      { text: 'Team', href: '/' },
+      { text: 'Careers', href: '/' },
+      { text: 'Contact', href: '/' },
     ],
   },
 ];

@@ -41,11 +41,19 @@ const StyledNavigation = styled.nav`
   @media only screen and (max-width: 1240px) {
     width: 95%;
   }
+
+  @media only screen and (max-width: 740px) {
+    flex-direction: column;
+  }
 `;
 
 const NavigationList = styled.ul`
   display: flex;
   list-style: none;
+
+  @media only screen and (max-width: 740px) {
+    margin-top: ${(props) => props.theme.spacing.md};
+  }
 `;
 
 const NavigationItem = styled.li`

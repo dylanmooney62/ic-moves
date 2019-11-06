@@ -11,16 +11,16 @@ const Navigation = () => (
     </Link>
     <NavigationList>
       <NavigationItem>
-        <NavigationLink href="#">Buy</NavigationLink>
+        <NavigationLink href="/">Buy</NavigationLink>
       </NavigationItem>
       <NavigationItem>
-        <NavigationLink href="#">Rent</NavigationLink>
+        <NavigationLink href="/">Rent</NavigationLink>
       </NavigationItem>
       <NavigationItem>
-        <NavigationLink href="#">Sign up</NavigationLink>
+        <NavigationLink href="/">Sign up</NavigationLink>
       </NavigationItem>
       <NavigationItem>
-        <NavigationLink href="#">Log in</NavigationLink>
+        <NavigationLink href="/">Log in</NavigationLink>
       </NavigationItem>
     </NavigationList>
   </StyledNavigation>

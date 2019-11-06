@@ -2,15 +2,21 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
+import 'animate.css';
+
 import heroImage from '../../assets/images/hero-image.jpeg';
 import Container from '../shared/Container';
 import Navigation from './Navigation';
 
-const Header = ({ title, subtitle, textAlign, height }) => (
+const Header = ({ title, subtitle, textAlign, height, animate }) => (
   <StyledHeader>
     <Navigation />
     <Container>
-      <TextBox textAlign={textAlign} height={height}>
+      <TextBox
+        textAlign={textAlign}
+        height={height}
+        className={animate && 'animated fadeIn'}
+      >
         <Title>{title}</Title>
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
       </TextBox>

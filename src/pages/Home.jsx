@@ -16,6 +16,7 @@ const Home = () => {
         subtitle="Search properties for sale and to rent in the UK"
         height="lg"
         textAlign="left"
+        animate
       />
       <ListingSearch />
       <FeaturedSection>

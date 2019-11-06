@@ -17,6 +17,11 @@ const TabButton = styled.button`
   position: relative;
   z-index: 100;
 
+  @media only screen and (max-width: 740px) {
+    padding-left: ${(props) => props.theme.spacing['2xl']};
+    padding-right: ${(props) => props.theme.spacing['2xl']};
+  }
+
   :focus {
     outline: none;
   }

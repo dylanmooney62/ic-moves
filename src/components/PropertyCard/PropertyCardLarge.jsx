@@ -47,6 +47,10 @@ const PropertyCardContainer = styled.div`
   border-radius: ${(props) => props.theme.radius.md};
   box-shadow: ${(props) => props.theme.shadow['1']};
   overflow: hidden;
+
+  @media only screen and (max-width: 1240px) {
+    max-width: 60rem;
+  }
 `;
 
 const PropertyButton = styled(CustomButton)`

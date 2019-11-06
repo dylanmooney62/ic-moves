@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+
   body {
     font-family: ${(props) => props.theme.typography.family};
     color: ${(props) => props.theme.palette.neutral[300]};

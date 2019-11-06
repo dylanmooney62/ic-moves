@@ -22,16 +22,16 @@ export class PropertyDetail extends Component {
         <BackBanner />
         <Container maxWidth="sm">
           <Details as="article">
-            <Box
+            <ResponsiveBox
               display="flex"
               justifyContent="space-between"
               alignItems="flex-start"
             >
-              <Box mb="2xl">
+              <Box mb="2xl" style={{ width: '100%' }}>
                 <Gallery imgUrl={img_url} />
               </Box>
               <PropertyCardLarge property={property} />
-            </Box>
+            </ResponsiveBox>
             <PropertyPanel property={property} />
           </Details>
           {listing_type === 'buy' && (
@@ -49,13 +49,32 @@ export class PropertyDetail extends Component {
 
 export default PropertyDetail;
 
+const ResponsiveBox = styled(Box)`
+  @media only screen and (max-width: 1240px) {
+    flex-direction: column;
+    max-width: 60rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: ${(props) => props.theme.spacing['3xl']};
+  }
+`;
+
 const Details = styled(Box)`
   padding-top: ${(props) => props.theme.spacing['2xl']};
   margin-bottom: 10rem;
+
+  @media only screen and (max-width: 1240px) {
+    margin-bottom: ${(props) => props.theme.spacing['3xl']};
+  }
 `;
 
 const Section = styled.section`
   padding-bottom: 15rem;
+
+  @media only screen and (max-width: 1240px) {
+    max-width: 60rem;
+    margin: 0 auto;
+  }
 `;
 
 const Title = styled.h2`

@@ -79,6 +79,10 @@ export default PropertyPanel;
 const StyledPropertyPanel = styled(Panel)`
   width: 100%;
   max-width: 60rem;
+
+  @media only screen and (max-width: 1240px) {
+    margin: 0 auto;
+  }
 `;
 
 const LargeTab = styled(Tab)`

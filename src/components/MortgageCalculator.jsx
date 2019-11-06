@@ -117,6 +117,10 @@ export default MortgageCalculator;
 const StyledMortgageCalulator = styled(Panel)`
   width: 100%;
   max-width: 60rem;
+
+  @media only screen and (max-width: 1240px) {
+    margin: 0 auto;
+  }
 `;
 
 const Paragraph = styled.p`

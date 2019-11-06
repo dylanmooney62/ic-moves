@@ -6,7 +6,6 @@ import Header from '../components/Header/Header';
 import ListingSearch from '../components/ListingSearch/ListingSearch';
 import PropertyCardList from '../components/PropertyCardList';
 import properties from '../temp/listings.json';
-import LearnMore from '../components/LearnMore';
 import Footer from '../components/Footer/Footer';
 
 const Home = () => {
@@ -21,9 +20,8 @@ const Home = () => {
       <ListingSearch />
       <FeaturedSection>
         <Title>Featured Properties</Title>
-        <PropertyCardList properties={properties.listings} limit={3} />
+        <PropertyCardList properties={properties.listings} limit={9} />
       </FeaturedSection>
-      <LearnMore />
       <Footer />
     </>
   );

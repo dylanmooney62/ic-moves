@@ -31,7 +31,7 @@ const MainForm = ({ formData, errors, onChange, onToggle }) => {
         name="placeName"
         id="placeName"
         value={formData.placeName}
-        placeholder={errors.placeName || "e.g Glasgow, GLS or 'Bellgrove"}
+        placeholder={errors.placeName || 'e.g Ayrshire, KA6'}
         type="text"
         onChange={handleChange}
         error={errors.placeName}
